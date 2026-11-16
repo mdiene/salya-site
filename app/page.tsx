@@ -96,7 +96,7 @@ export default function Home() {
                   <a className="btn btn--primary" href="#demo">Essayer la démo guidée{ARROW}</a>
                   <a className="btn btn--secondary" href="#inscription">Réserver un mois d’essai</a>
                 </div>
-                <p className="hero__proof">Première paie dans la journée pour une petite équipe.</p>
+                <p className="hero__proof">Première paie dans la journée pour une petite équipe. Intérim, gardiennage, hôtellerie, transport, nettoyage : <a className="link" href="#metiers">découvrez l’offre Verticale</a>.</p>
               </div>
               <div className="hero__art span-6 start-7" role="img" aria-label="Liggeey : la paie de novembre 2026 pour six salariés fictifs, et le bulletin d’Awa Ndiaye approuvé">
                 <div className="ly-piece ly-piece--main d-win" aria-hidden="true">
@@ -175,6 +175,27 @@ export default function Home() {
                 </ul>
               </div>
               <Visual name="window" max={456} h={560} label="Fenêtre Liggeey : la paie de novembre, six salariés et leur statut" />
+            </div>
+          </div>
+        </section>
+
+        <section className="section" id="metiers" style={{ ["--hm" as string]: 2 }} aria-labelledby="metiers-h">
+          <div className="wrap">
+            <div className="grid grid--top">
+              <div className="span-6 stack-4">
+                <h2 id="metiers-h">Vos équipes de terrain ont des règles à part. <span className="muted">L’offre Verticale les prend en compte.</span></h2>
+                <p className="t-lead">Horaires de nuit, majorations, missions courtes : ces métiers font vite exploser un fichier Excel. Nous construisons les règles de votre métier avec nos premiers clients, à 2 500 FCFA par salarié et par mois.</p>
+                <div className="btn-row"><a className="btn btn--primary" href="#inscription">Parler de mon métier{ARROW}</a></div>
+              </div>
+              <div className="span-6 start-7">
+                <ul className="rows">
+                  <li><span className="rows__name">Intérim</span><p>Missions courtes, indemnité de fin de mission, bulletins en série.</p></li>
+                  <li><span className="rows__name">Gardiennage et nettoyage</span><p>Plannings de jour et de nuit, majorations d’heures supplémentaires, sites multiples.</p></li>
+                  <li><span className="rows__name">Hôtellerie et restauration</span><p>Horaires décalés, jours fériés, primes et pourboires.</p></li>
+                  <li><span className="rows__name">Transport</span><p>Déplacements, indemnités et heures de conduite.</p></li>
+                </ul>
+                <p className="t-small muted">Offre pilote : les règles de chaque métier sont validées avec vous avant votre première paie.</p>
+              </div>
             </div>
           </div>
         </section>
