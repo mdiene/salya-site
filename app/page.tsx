@@ -280,7 +280,7 @@ export default function Home() {
                   <li><span className="rows__name">Verticale <span className="tag">Pilote</span></span><p>Intérim, gardiennage, hôtellerie et restauration, transport, nettoyage. Tout Pro, plus les règles de votre métier.</p><span className="rows__value">2 500 FCFA</span></li>
                   <li><span className="rows__name">Cabinets <span className="tag">Bientôt</span></span><p>Fiduciaires et sociétés de paie externalisée : plusieurs dossiers, droits par collaborateur. 35 000 FCFA par mois pour 10 dossiers, puis 3 000 par dossier.</p><span className="rows__value">Liste d’attente</span></li>
                   <li><span className="rows__name">Grandes entreprises</span><p>Plus de 300 salariés, conventions spécifiques, accompagnement dédié et formation de vos équipes.</p><span className="rows__value">Sur devis</span></li>
-                  <li><span className="rows__name">Pack Démarrage</span><p>Reprise de l’existant, paramétrage et formation, en forfait unique et facultatif.</p><span className="rows__value"><Ph>[Z] FCFA</Ph></span></li>
+                  <li><span className="rows__name">Pack Démarrage</span><p>Reprise de l’existant, paramétrage et formation, en forfait unique et facultatif.</p><span className="rows__value">50 000 FCFA</span></li>
                 </ul>
                 <p className="t-small muted">Remises de volume : 10 % de 11 à 30 salariés, 20 % de 31 à 75, 30 % au-delà. Les mises à jour des taux et plafonds légaux sont comprises.</p>
                 <div className="btn-row"><a className="btn btn--primary" href="#inscription">Démarrer l’essai{ARROW}</a></div>
@@ -316,7 +316,7 @@ export default function Home() {
               <div className="span-6 stack-4">
                 <h2 id="inscription-h">Réservez votre mois d’essai.</h2>
                 <p className="t-lead">Dites-nous qui vous êtes et combien de salariés vous gérez. Nous vous écrivons pour ouvrir votre espace.</p>
-                <p>WhatsApp : <Ph>+221 [numéro]</Ph><br />Dakar, Sénégal</p>
+                <p>WhatsApp : +221 77 517 17 77<br />Dakar, Sénégal</p>
                 <div className="grid"><Visual name="chat" max={340} h={380} className="span-12" label="Échange avec l’équipe Salya : reprise d’un fichier Excel de 18 salariés" /></div>
               </div>
               <div className="span-6 start-7">

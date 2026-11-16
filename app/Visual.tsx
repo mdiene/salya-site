@@ -66,7 +66,7 @@ const FRAGMENTS = {
 
   invoice: `<div class="ui ui-notify" data-ui="notify"><ul class="ui-notify__list" data-notify-list>
     <li class="ui-note"><span class="ui-avatar ui-note__av" data-tone="1">LG</span><span class="ui-note__text"><span class="ui-note__title">Facture de novembre<time>6 salariés</time></span><span class="ui-note__body">1 200 FCFA par salarié, minimum 12 000</span></span></li>
-    <li class="ui-note"><span class="ui-avatar ui-note__av" data-tone="4">PD</span><span class="ui-note__text"><span class="ui-note__title">Pack Démarrage<time>une fois</time></span><span class="ui-note__body">Reprise, paramétrage et formation : [Z] FCFA</span></span></li>
+    <li class="ui-note"><span class="ui-avatar ui-note__av" data-tone="4">PD</span><span class="ui-note__text"><span class="ui-note__title">Pack Démarrage<time>une fois</time></span><span class="ui-note__body">Reprise, paramétrage et formation : 50 000 FCFA</span></span></li>
     <li class="ui-note"><span class="ui-note__ico"><svg class="ui-icon" viewBox="0 0 16 16"><path d="m3.5 8.4 2.8 2.8 6.2-6.4"/></svg></span><span class="ui-note__text"><span class="ui-note__title">Un mois d’essai offert<time>jour 1</time></span><span class="ui-note__body">Aucun paiement avant la fin de l’essai</span></span></li>
   </ul></div>`,
 
