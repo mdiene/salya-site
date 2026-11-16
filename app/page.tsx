@@ -37,7 +37,8 @@ const TRIAL = [
 const CMP = [
   ["Mise en route", "Souvent un projet de plusieurs semaines, avec un consultant.", "Objectif : première paie dans la journée, sans consultant."],
   ["Reprise de l’existant", "À votre charge, ou en prestation payante.", "Accompagnée pendant le mois d’essai."],
-  ["Coût de départ", "Licence et déploiement à l’avance.", "Abonnement mensuel, un mois offert."],
+  ["Coût de départ", "Licence et déploiement à l’avance.", "Abonnement mensuel à partir de 1 200 FCFA par salarié, un mois offert."],
+  ["Mises à jour légales", "Selon le contrat de maintenance.", "Taux et plafonds tenus à jour, compris dans l’abonnement."],
   ["Langue et monnaie", "Selon l’éditeur et le pays.", "Français et FCFA dès l’origine."],
   ["Règlement des salaires", "Souvent traité hors du logiciel.", "Règlement par lot préparé dans l’outil (en cours de finalisation)."],
   ["Contrôles", "Variables selon les modules achetés.", "Validation par rôles, piste d’audit, périodes verrouillées."],
@@ -48,7 +49,10 @@ const FAQ = [
   ["Puis-je reprendre mes salariés depuis Excel ?", "Oui. Vous déposez votre fichier, Liggeey signale les informations manquantes et vous les corrigez à l’écran. Notre équipe vous accompagne."],
   ["Les règles de paie du Sénégal sont-elles à jour ?", "Les paramètres sont tenus à jour par notre équipe à partir des textes en vigueur. La liste détaillée et sa date de dernière mise à jour seront publiées ici avant le lancement. [à valider]"],
   ["Que deviennent mes données si j’arrête après l’essai ?", "Elles restent les vôtres. Vous pourrez les récupérer, que vous continuiez ou non. [engagement à valider]"],
-  ["Et pour plusieurs entreprises ou plusieurs clients ?", "L’offre Entreprise et cabinets est prévue pour cela. Parlez-nous de votre organisation et nous préparons un essai adapté."],
+  ["Comment le prix est-il calculé ?", "Au nombre de salariés payés dans le mois, avec un minimum mensuel selon la formule et des remises de volume. Aucun frais caché : la reprise de vos données est un forfait facultatif."],
+  ["Que signifie « tarif pilote » ?", "Les premiers clients bénéficient d’un prix réduit pendant que nous terminons les déclarations officielles, le règlement par mobile money et la double authentification. En échange, nous vous demandons votre retour d’expérience."],
+  ["Pourquoi un abonnement plutôt qu’un module acheté une fois ?", "L’abonnement comprend les mises à jour des textes, l’hébergement, le support et l’espace salarié. Un module acheté une fois ne suit pas les changements de la loi."],
+  ["Et pour plusieurs entreprises ou plusieurs clients ?", "L’offre Cabinets (en préparation) et l’offre Grandes entreprises sont prévues pour cela. Parlez-nous de votre organisation et nous préparons un essai adapté."],
 ];
 
 function Ph({ children }: { children: React.ReactNode }) {
@@ -209,12 +213,14 @@ export default function Home() {
                 <h2 id="suite-h">Liggeey aujourd’hui, <span className="muted">la suite Salya demain.</span></h2>
                 <ul className="rows">
                   <li><span className="rows__name">Liggeey <span className="tag ok">Disponible</span></span><p>RH et paie. C’est ici que tout commence.</p></li>
-                  <li><span className="rows__name">Comptabilité <span className="tag">Bientôt</span></span><p>Écritures, rapprochements et états financiers, reliés à la paie.</p></li>
+                  <li><span className="rows__name">Déclarations officielles <span className="tag">En cours</span></span><p>Exports pour l’IPRES, la CSS et les impôts, avec un contrôle avant dépôt.</p></li>
+                  <li><span className="rows__name">Règlement par lot et mobile money <span className="tag">Bientôt</span></span><p>Fichiers de virement, Wave et Orange Money.</p></li>
+                  <li><span className="rows__name">Passerelles comptables <span className="tag">Bientôt</span></span><p>Échanges avec Sage, Odoo, SunuCompta et Excel, sans ressaisie.</p></li>
                   <li><span className="rows__name">Autres modules <span className="tag">Bientôt</span></span><p>Dites-nous ce qui vous manque le plus, nous construisons dans cet ordre.</p></li>
                 </ul>
                 <a className="link" href="#inscription">Être prévenu des prochains modules</a>
               </div>
-              <Visual name="notify" max={380} h={520} label="Notifications Salya : paie approuvée, comptabilité bientôt, autres modules" />
+              <Visual name="notify" max={380} h={520} label="Notifications Salya : paie approuvée, déclarations officielles, passerelles comptables" />
             </div>
           </div>
         </section>
@@ -246,16 +252,19 @@ export default function Home() {
           <div className="wrap">
             <div className="grid grid--top">
               <div className="span-6 stack-4">
-                <h2 id="tarifs-h">Un prix lisible, un mois offert. <span className="muted">Par salarié et par mois, en FCFA. Montants à fixer.</span></h2>
+                <h2 id="tarifs-h">Un prix lisible, un mois offert. <span className="muted">Par salarié et par mois, en FCFA hors taxes. Tarifs pilote.</span></h2>
                 <ul className="rows">
-                  <li><span className="rows__name">Essentiel</span><p>Paie et bulletins, congés et absences, fiche salarié et documents, support par WhatsApp.</p><span className="rows__value"><Ph>[X] FCFA</Ph></span></li>
-                  <li><span className="rows__name">Pro <span className="tag ok">Le plus choisi</span></span><p>Tout Essentiel, plus présences et variables du mois, rôles, validations, piste d’audit, prêts, heures supplémentaires et prorata.</p><span className="rows__value"><Ph>[Y] FCFA</Ph></span></li>
-                  <li><span className="rows__name">Entreprise et cabinets</span><p>Plusieurs entités ou clients, accompagnement dédié, paramétrage par convention, formation de vos équipes.</p><span className="rows__value">Sur devis</span></li>
-                  <li><span className="rows__name">Pack Démarrage</span><p>Reprise de l’existant, paramétrage et formation, en forfait unique.</p><span className="rows__value"><Ph>[Z] FCFA</Ph></span></li>
+                  <li><span className="rows__name">Essentiel</span><p>6 à 50 salariés. Paie et bulletins, congés et absences, fiche salarié et documents, support par WhatsApp. Minimum 12 000 FCFA par mois.</p><span className="rows__value">1 200 FCFA</span></li>
+                  <li><span className="rows__name">Pro <span className="tag ok">Le plus choisi</span></span><p>20 à 300 salariés. Tout Essentiel, plus présences et variables du mois, rôles, validations, piste d’audit, prêts, heures supplémentaires et prorata. Minimum 30 000 FCFA par mois.</p><span className="rows__value">1 500 FCFA</span></li>
+                  <li><span className="rows__name">Verticale <span className="tag">Pilote</span></span><p>Intérim, gardiennage, hôtellerie et restauration, transport, nettoyage. Tout Pro, plus les règles de votre métier.</p><span className="rows__value">2 500 FCFA</span></li>
+                  <li><span className="rows__name">Cabinets <span className="tag">Bientôt</span></span><p>Fiduciaires et sociétés de paie externalisée : plusieurs dossiers, droits par collaborateur. 35 000 FCFA par mois pour 10 dossiers, puis 3 000 par dossier.</p><span className="rows__value">Liste d’attente</span></li>
+                  <li><span className="rows__name">Grandes entreprises</span><p>Plus de 300 salariés, conventions spécifiques, accompagnement dédié et formation de vos équipes.</p><span className="rows__value">Sur devis</span></li>
+                  <li><span className="rows__name">Pack Démarrage</span><p>Reprise de l’existant, paramétrage et formation, en forfait unique et facultatif.</p><span className="rows__value"><Ph>[Z] FCFA</Ph></span></li>
                 </ul>
+                <p className="t-small muted">Remises de volume : 10 % de 11 à 30 salariés, 20 % de 31 à 75, 30 % au-delà. Les mises à jour des taux et plafonds légaux sont comprises.</p>
                 <div className="btn-row"><a className="btn btn--primary" href="#inscription">Démarrer l’essai{ARROW}</a></div>
               </div>
-              <Visual name="invoice" max={380} h={460} label="Aperçu d’une facture Liggeey : nombre de salariés et prix par salarié, montants à fixer" />
+              <Visual name="invoice" max={380} h={460} label="Aperçu d’une facture Liggeey : six salariés, 1 200 FCFA par salarié, minimum mensuel de 12 000 FCFA" />
             </div>
           </div>
         </section>
