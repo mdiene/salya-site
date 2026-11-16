@@ -1,0 +1,23 @@
+{
+  "marque": "Salya",
+  "version": "1.1",
+  "couleurs": {
+    "bazin": "#2F3A8F", "nuit": "#161A3A", "nuit-profonde": "#0F1230",
+    "laterite": "#C8441F", "mangue": "#F5B83D", "baobab": "#1F7A5C",
+    "sable": "#FAF5EC", "sable-clair": "#F1EADC", "encre": "#1A1A24",
+    "ardoise": "#4A4A5A", "brume": "#E7DFD0", "blanc": "#FFFFFF"
+  },
+  "statuts": {
+    "attente": { "fond": "#E7DFD0", "texte": "#1A1A24" },
+    "en-cours": { "fond": "#FFF3D6", "texte": "#6B4A00" },
+    "valide": { "fond": "#D5EBE2", "texte": "#14543F" }
+  },
+  "typographie": {
+    "titres": "Bricolage Grotesque", "texte": "Figtree", "mono": "DM Mono",
+    "reperes-word": { "titres": "Calibri", "texte": "Calibri" },
+    "echelle-px": { "h1": 72, "h2": 48, "h3": 28, "lead": 20, "carte": 20, "texte": 16, "petit": 14, "etiquette": 13 }
+  },
+  "rayons-px": { "petit": 8, "moyen": 12, "grand": 20 },
+  "espacements-px": [4, 8, 12, 16, 24, 32, 48, 64, 96, 128],
+  "mouvement-ms": { "survol": 150, "interface": 250, "entree": 450 }
+}

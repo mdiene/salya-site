@@ -1,0 +1,26 @@
+/* Jetons de design Salya v1.1 : couleurs, polices, rayons, espacements */
+:root {
+  --salya-bazin: #2F3A8F;
+  --salya-nuit: #161A3A;
+  --salya-nuit-profonde: #0F1230;
+  --salya-laterite: #C8441F;   /* boutons principaux uniquement, jamais en petit texte */
+  --salya-mangue: #F5B83D;     /* accent, jamais en texte ni en trait sur fond clair (contraste 1,6) */
+  --salya-baobab: #1F7A5C;
+  --salya-sable: #FAF5EC;
+  --salya-sable-clair: #F1EADC;
+  --salya-encre: #1A1A24;
+  --salya-ardoise: #4A4A5A;
+  --salya-brume: #E7DFD0;
+  --salya-blanc: #FFFFFF;
+
+  --salya-font-titres: "Bricolage Grotesque", Calibri, system-ui, sans-serif;
+  --salya-font-texte: "Figtree", Calibri, system-ui, sans-serif;
+  --salya-font-mono: "DM Mono", ui-monospace, Consolas, monospace;
+
+  --salya-r-petit: 8px;
+  --salya-r-moyen: 12px;
+  --salya-r-grand: 20px;
+
+  --salya-s-1: 4px; --salya-s-2: 8px; --salya-s-3: 12px; --salya-s-4: 16px; --salya-s-5: 24px;
+  --salya-s-6: 32px; --salya-s-7: 48px; --salya-s-8: 64px; --salya-s-9: 96px; --salya-s-10: 128px;
+}

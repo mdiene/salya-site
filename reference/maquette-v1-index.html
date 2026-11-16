@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Salya, suite de gestion</title>
+<meta name="description" content="Salya, la suite de gestion pour les entreprises d'Afrique de l'Ouest. Liggeey, le module RH et paie : première paie dans la journée, un mois d'essai offert.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Idée : bazin indigo dominant, lattice tissé en fond, un seul moment fort (le bulletin qui se calcule), latérite réservée aux CTA */
+:root{
+  --bazin:#2F3A8F; --nuit:#161A3A; --nuit-2:#0F1230; --laterite:#C8441F; --mangue:#F5B83D;
+  --baobab:#1F7A5C; --sable:#FAF5EC; --sable-2:#F1EADC; --encre:#1A1A24; --brume:#E7DFD0;
+  --soft:#4A4A5A; --on-nuit:#E8E6F5; --white:#fff;
+  --font-d:'Bricolage Grotesque','Trebuchet MS',system-ui,sans-serif;
+  --font-b:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--sable);color:var(--encre);font-family:var(--font-b);font-size:17px;line-height:1.6}
+h1,h2,h3{font-family:var(--font-d);line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.02em}
+h1{font-size:clamp(2.3rem,7.2vw,4.4rem);font-weight:800}
+h2{font-size:clamp(1.8rem,4.8vw,3rem);font-weight:800}
+h3{font-size:1.2rem;font-weight:700;letter-spacing:-.01em}
+p{margin:0}
+a{color:var(--bazin)}
+img,svg{max-width:100%}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+.sec{padding:72px 0}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bazin)}
+.eyebrow::before{content:"";width:22px;height:2px;background:currentColor}
+.on-dark .eyebrow{color:var(--mangue)}
+.lead{font-size:1.15rem;color:var(--soft);max-width:60ch}
+.on-dark .lead{color:#C9C7DA}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 22px;border-radius:12px;font:700 1rem var(--font-b);text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .15s ease,background .15s ease,border-color .15s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0)}
+.btn-cta{background:var(--laterite);color:#fff}
+.btn-cta:hover{background:#B03A19}
+.btn-ghost{background:transparent;color:inherit;border-color:currentColor}
+.btn-dark{background:var(--nuit);color:var(--sable)}
+.btn[disabled]{opacity:.55;cursor:not-allowed;transform:none}
+:focus-visible{outline:3px solid var(--mangue);outline-offset:3px;border-radius:6px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.tag{display:inline-block;font-size:.75rem;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--mangue);color:var(--nuit);letter-spacing:.02em}
+.tag.soon{background:var(--brume);color:var(--soft)}
+.tag.ok{background:#D5EBE2;color:#14543F}
+.ph{border-bottom:2px dotted var(--laterite);color:var(--laterite);font-weight:700;white-space:nowrap}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:50;background:rgba(250,245,236,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--brume)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px}
+.logo{display:inline-flex;align-items:center;gap:10px;font:800 1.5rem var(--font-d);color:var(--nuit);text-decoration:none;letter-spacing:-.03em}
+.logo svg{width:28px;height:28px}
+.nav-links{display:none;gap:22px;align-items:center}
+.nav-links a{color:var(--encre);text-decoration:none;font-weight:600;font-size:.95rem}
+.nav-links a:hover{color:var(--bazin)}
+.nav-links a.btn-cta{color:#fff}
+.menu-btn{background:none;border:2px solid var(--nuit);border-radius:10px;min-height:44px;min-width:44px;font:700 .9rem var(--font-b);color:var(--nuit);cursor:pointer;padding:0 14px}
+.mobile-menu{display:none;border-top:1px solid var(--brume);background:var(--sable)}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:block;padding:14px 20px;color:var(--encre);text-decoration:none;font-weight:600;border-bottom:1px solid var(--brume)}
+@media(min-width:900px){.nav-links{display:flex}.menu-btn,.mobile-menu{display:none!important}}
+
+/* HERO */
+.hero{background:var(--nuit);color:var(--sable);position:relative;overflow:hidden;padding:56px 0 72px}
+.hero::before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,rgba(250,245,236,.07) 0 1px,transparent 1px 16px),repeating-linear-gradient(-45deg,rgba(250,245,236,.07) 0 1px,transparent 1px 16px);animation:drift 40s linear infinite}
+@keyframes drift{to{background-position:64px 64px,-64px 64px}}
+.hero .wrap{position:relative;display:grid;gap:40px}
+.hero h1 em{font-style:normal;color:var(--mangue)}
+.hero .lead{margin-top:20px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.hero-note{margin-top:18px;font-size:.9rem;color:#B9B7D0}
+@media(min-width:960px){.hero .wrap{grid-template-columns:1.1fr .9fr;align-items:center}}
+
+.slip{background:#fff;color:var(--encre);border-radius:18px;padding:22px;box-shadow:0 24px 60px rgba(0,0,0,.35);transform:rotate(1.2deg)}
+.slip-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;border-bottom:1px dashed var(--brume);padding-bottom:14px}
+.slip-top b{font:700 1.1rem var(--font-d)}
+.slip small{color:var(--soft);display:block}
+.slip table{width:100%;border-collapse:collapse;margin-top:10px;font-variant-numeric:tabular-nums}
+.slip td{padding:9px 0;border-bottom:1px solid var(--sable-2);font-size:.95rem}
+.slip td:last-child{text-align:right;font-weight:600}
+.slip tr.net td{border-bottom:0;padding-top:14px;font:800 1.25rem var(--font-d);color:var(--bazin)}
+.slip-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:10px;font-size:.8rem;color:var(--soft)}
+.slip .stamp{display:inline-flex;align-items:center;gap:6px;font-weight:700;color:var(--baobab)}
+
+/* PILLARS */
+.pillars{display:grid;gap:14px;margin-top:36px}
+.pillar{background:#fff;border:1px solid var(--brume);border-radius:16px;padding:22px}
+.pillar svg{width:30px;height:30px;color:var(--bazin);margin-bottom:12px}
+.pillar p{color:var(--soft);margin-top:6px;font-size:.98rem}
+@media(min-width:700px){.pillars{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.pillars{grid-template-columns:repeat(4,1fr)}}
+
+/* COMPARE */
+.cmp-wrap{margin-top:32px;overflow-x:auto;border-radius:16px;border:1px solid var(--brume);background:#fff}
+.cmp{width:100%;min-width:640px;border-collapse:collapse}
+.cmp th,.cmp td{padding:16px 18px;text-align:left;vertical-align:top;border-bottom:1px solid var(--sable-2);font-size:.97rem}
+.cmp thead th{font:700 .85rem var(--font-b);text-transform:uppercase;letter-spacing:.06em;color:var(--soft);background:var(--sable-2)}
+.cmp thead th.us{background:var(--bazin);color:var(--sable)}
+.cmp td.us{background:#EEF0FB;font-weight:600}
+.cmp tbody th{font-weight:700;width:24%}
+.cmp tr:last-child th,.cmp tr:last-child td{border-bottom:0}
+.fine{font-size:.85rem;color:var(--soft);margin-top:12px}
+
+/* DEMO */
+.demo-sec{background:var(--sable-2)}
+.demo{margin-top:32px;background:#fff;border:1px solid var(--brume);border-radius:22px;overflow:hidden;box-shadow:0 18px 50px rgba(22,26,58,.12)}
+.demo-top{padding:20px;background:var(--nuit);color:var(--sable)}
+.demo-top p{color:#C9C7DA;font-size:.95rem;margin-top:6px}
+.profiles{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{min-height:44px;padding:8px 16px;border-radius:999px;border:2px solid rgba(250,245,236,.35);background:transparent;color:var(--sable);font:600 .95rem var(--font-b);cursor:pointer}
+.chip[aria-checked="true"]{background:var(--mangue);border-color:var(--mangue);color:var(--nuit)}
+.chip.light{border-color:var(--brume);color:var(--encre);background:#fff}
+.chip.light[aria-checked="true"]{background:var(--bazin);border-color:var(--bazin);color:#fff}
+.steps{display:flex;gap:6px;list-style:none;margin:0;padding:14px 20px;background:var(--sable);border-bottom:1px solid var(--brume);overflow-x:auto}
+.steps li{flex:1 0 auto;display:flex;align-items:center;gap:8px;font-size:.85rem;font-weight:700;color:var(--soft);white-space:nowrap;padding-right:10px}
+.steps li span{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--brume);color:var(--soft);font-size:.8rem}
+.steps li[aria-current="step"]{color:var(--bazin)}
+.steps li[aria-current="step"] span{background:var(--bazin);color:#fff}
+.steps li.done span{background:var(--baobab);color:#fff}
+.panel{padding:22px 20px}
+.panel h3{margin-bottom:6px}
+.panel>p{color:var(--soft);max-width:62ch}
+.drop{margin-top:18px;border:2px dashed var(--bazin);border-radius:16px;padding:22px;text-align:center;background:#F6F7FE}
+.drop p{color:var(--soft);margin-bottom:12px}
+.tbl-wrap{margin-top:18px;overflow-x:auto;border:1px solid var(--brume);border-radius:14px}
+.tbl{width:100%;min-width:520px;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:.95rem}
+.tbl th,.tbl td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--sable-2)}
+.tbl th{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--soft);background:var(--sable)}
+.tbl td.r,.tbl th.r{text-align:right}
+.tbl tr:last-child td{border-bottom:0}
+.tbl tr.warn td{background:#FFF3D6}
+.tbl tfoot td{font-weight:800;background:var(--sable)}
+.rowin{animation:rowin .45s ease both}
+@keyframes rowin{from{transform:translateX(-14px);opacity:.2}to{transform:none;opacity:1}}
+.fixbtn{min-height:36px;padding:4px 12px;border-radius:8px;border:2px solid var(--laterite);background:#fff;color:#8C2F12;font:700 .85rem var(--font-b);cursor:pointer}
+.choices{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.field-label{font-weight:700;margin-top:20px;display:block}
+.bar{height:12px;border-radius:999px;background:var(--sable-2);overflow:hidden;margin-top:16px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--bazin),var(--mangue));transition:width .25s linear}
+.pipe{display:flex;gap:6px;flex-wrap:wrap;margin-top:16px}
+.pipe b{font-size:.8rem;padding:5px 12px;border-radius:999px;background:var(--sable-2);color:var(--soft)}
+.pipe b.on{background:var(--bazin);color:#fff}
+.pipe b.past{background:#D5EBE2;color:#14543F}
+.st{display:inline-block;font-size:.78rem;font-weight:700;padding:2px 10px;border-radius:999px}
+.st.wait{background:var(--sable-2);color:var(--soft)}
+.st.run{background:#FFF3D6;color:#6B4A00}
+.st.ok{background:#D5EBE2;color:#14543F}
+.demo-foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:16px 20px;border-top:1px solid var(--brume);background:var(--sable)}
+.msg{min-height:1.4em;font-size:.92rem;font-weight:600;color:#8C2F12}
+.demo-actions{display:flex;gap:10px;flex-wrap:wrap}
+.final{margin-top:18px;padding:18px;border-radius:14px;background:#EEF0FB}
+
+/* MODULES */
+.mod-grid{display:grid;gap:14px;margin-top:36px}
+.mod{background:#fff;border:1px solid var(--brume);border-radius:16px;padding:22px;transition:transform .2s ease,border-color .2s ease}
+.mod:hover{transform:translateY(-4px);border-color:var(--bazin)}
+.mod p{color:var(--soft);margin-top:6px;font-size:.97rem}
+@media(min-width:700px){.mod-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.mod-grid{grid-template-columns:repeat(3,1fr)}}
+.flow{background:var(--nuit);color:var(--sable);padding:56px 0}
+.flow-line{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.flow-line div{flex:1 1 120px;padding:14px 12px;border-radius:12px;border:1px solid rgba(250,245,236,.25);font:700 .95rem var(--font-d);text-align:center;transition:background .4s ease,color .4s ease,transform .4s ease}
+.flow-line div.on{background:var(--mangue);color:var(--nuit);transform:translateY(-4px)}
+.flow-line div.past{background:rgba(250,245,236,.12)}
+
+/* TRIAL */
+.trial{background:var(--bazin);color:var(--sable);position:relative;overflow:hidden}
+.trial::before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,rgba(250,245,236,.08) 0 1px,transparent 1px 18px),repeating-linear-gradient(-45deg,rgba(250,245,236,.08) 0 1px,transparent 1px 18px)}
+.trial .wrap{position:relative}
+.tl{display:grid;gap:14px;margin-top:34px;padding:0}
+.tl li{list-style:none;background:rgba(22,26,58,.55);border:1px solid rgba(250,245,236,.25);border-radius:16px;padding:20px}
+.tl li b{display:block;font:800 1.05rem var(--font-d);color:var(--mangue);margin-bottom:6px}
+.tl li p{color:#E1E0F1;font-size:.97rem}
+@media(min-width:800px){.tl{grid-template-columns:repeat(4,1fr)}}
+
+/* SUITE */
+.suite{display:grid;gap:14px;margin-top:34px}
+.suite .card{background:#fff;border:1px solid var(--brume);border-radius:16px;padding:22px}
+.suite .card.live{border:2px solid var(--bazin)}
+.suite p{color:var(--soft);margin:8px 0 14px;font-size:.97rem}
+@media(min-width:800px){.suite{grid-template-columns:repeat(3,1fr)}}
+
+/* PRICING */
+.plans{display:grid;gap:16px;margin-top:34px}
+.plan{background:#fff;border:1px solid var(--brume);border-radius:18px;padding:26px;display:flex;flex-direction:column;gap:14px}
+.plan.hot{border:2px solid var(--bazin);box-shadow:0 14px 40px rgba(47,58,143,.16)}
+.plan .price{font:800 1.9rem var(--font-d)}
+.plan ul{margin:0;padding:0;list-style:none;display:grid;gap:9px;flex:1}
+.plan li{display:flex;gap:10px;font-size:.97rem}
+.plan li::before{content:"";flex:0 0 18px;height:18px;margin-top:3px;border-radius:50%;background:var(--baobab) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M5 9.5l2.6 2.6L13 6.6' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
+.pack{margin-top:18px;padding:20px;border-radius:16px;border:2px dashed var(--bazin);background:#F6F7FE;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+@media(min-width:900px){.plans{grid-template-columns:repeat(3,1fr)}}
+
+/* FAQ */
+.faq{max-width:820px;margin-top:30px;display:grid;gap:10px}
+.faq details{background:#fff;border:1px solid var(--brume);border-radius:14px;padding:0 20px}
+.faq summary{cursor:pointer;font-weight:700;padding:18px 0;list-style:none;display:flex;justify-content:space-between;gap:16px;min-height:44px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font:700 1.4rem var(--font-d);color:var(--bazin)}
+.faq details[open] summary::after{content:"\2212"}
+.faq details p{padding:0 0 18px;color:var(--soft)}
+
+/* CONTACT */
+.contact{background:var(--nuit);color:var(--sable)}
+.contact .wrap{display:grid;gap:32px}
+@media(min-width:900px){.contact .wrap{grid-template-columns:1fr 1fr;align-items:start}}
+form.card{background:#fff;color:var(--encre);border-radius:18px;padding:24px;display:grid;gap:14px}
+form label{font-weight:700;font-size:.92rem;display:block;margin-bottom:5px}
+form input,form select{width:100%;min-height:48px;padding:10px 14px;border:2px solid var(--brume);border-radius:10px;font:500 1rem var(--font-b);background:#fff;color:var(--encre)}
+form input:focus,form select:focus{border-color:var(--bazin);outline:none}
+.sent{background:#EEF0FB;border-radius:12px;padding:16px;font-size:.95rem;display:none}
+.sent.show{display:block}
+.sent pre{white-space:pre-wrap;font:500 .9rem var(--font-b);margin:8px 0 12px;background:#fff;border-radius:8px;padding:12px;border:1px solid var(--brume)}
+footer{background:var(--nuit-2);color:#B9B7D0;padding:40px 0;font-size:.92rem}
+footer .wrap{display:grid;gap:20px}
+footer a{color:var(--sable)}
+footer .logo{color:var(--sable)}
+.wa{position:fixed;right:16px;bottom:16px;z-index:60;display:inline-flex;align-items:center;gap:8px;min-height:52px;padding:0 18px;border-radius:999px;background:var(--baobab);color:#fff;font:700 .95rem var(--font-b);text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.wa svg{width:22px;height:22px}
+
+.rv{transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.rv:not(.in){transform:translateY(16px)}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero::before{animation:none}
+  .rv:not(.in){transform:none}
+  .rowin{animation:none}
+  .btn,.mod,.flow-line div{transition:none}
+  .slip{transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Salya, accueil">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="2" y="2" width="28" height="28" rx="8" fill="#2F3A8F"/><path d="M16 6l8 10-8 10-8-10z" fill="none" stroke="#FAF5EC" stroke-width="2"/><path d="M16 11l4 5-4 5-4-5z" fill="#F5B83D"/></svg>
+      Salya
+    </a>
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="#liggeey">Liggeey</a>
+      <a href="#demo">Démo guidée</a>
+      <a href="#essai">Mois d'essai</a>
+      <a href="#tarifs">Tarifs</a>
+      <a href="#comparatif">Comparatif</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-cta" href="#demo" style="min-height:44px;padding:8px 18px">Essayer la démo</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#liggeey">Liggeey, RH et paie</a>
+    <a href="#demo">Démo guidée</a>
+    <a href="#essai">Mois d'essai</a>
+    <a href="#tarifs">Tarifs</a>
+    <a href="#comparatif">Comparatif</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero on-dark">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Salya · la suite pour piloter son entreprise</span>
+      <h1 style="margin-top:18px">La paie de votre équipe, <em>prête en une journée.</em></h1>
+      <p class="lead">Liggeey, le module RH et paie de Salya. En français, en FCFA, sans installation et sans consultant pour démarrer.</p>
+      <div class="hero-cta">
+        <a class="btn btn-cta" href="#demo">Essayer la démo guidée</a>
+        <a class="btn btn-ghost" href="#contact">Réserver un mois d'essai</a>
+      </div>
+      <p class="hero-note">Un mois d'essai offert, avec reprise de vos fichiers existants.</p>
+    </div>
+    <div class="slip rv" role="group" aria-label="Exemple de bulletin de paie, données fictives">
+      <div class="slip-top">
+        <div><b>Awa Ndiaye</b><small>Comptable · novembre 2026</small></div>
+        <span class="tag ok">Approuvée</span>
+      </div>
+      <table>
+        <tbody>
+          <tr><td>Salaire de base</td><td><span data-count="450000">450 000</span> FCFA</td></tr>
+          <tr><td>Primes</td><td><span data-count="25000">25 000</span> FCFA</td></tr>
+          <tr><td>Retenues (exemple)</td><td>− <span data-count="85500">85 500</span> FCFA</td></tr>
+          <tr class="net"><td>Net à payer</td><td><span data-count="389500">389 500</span> FCFA</td></tr>
+        </tbody>
+      </table>
+      <div class="slip-foot"><span class="stamp">Calculé en quelques secondes</span><span>Exemple fictif</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="pil">
+  <div class="wrap">
+    <span class="eyebrow">Pensé pour ici</span>
+    <h2 id="pil" style="margin-top:12px">Un outil qui parle votre langue, en FCFA.</h2>
+    <div class="pillars">
+      <div class="pillar rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg><h3>En français</h3><p>Écrans, bulletins et aide rédigés pour les équipes RH francophones.</p></div>
+      <div class="pillar rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 7v10M9 10h5a2 2 0 010 4H9"/></svg><h3>Tout en FCFA</h3><p>Montants, arrondis et exports pensés pour la zone UEMOA.</p></div>
+      <div class="pillar rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2"/></svg><h3>Pensé mobile</h3><p>Des pages légères qui restent fluides quand la connexion varie.</p></div>
+      <div class="pillar rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg><h3>Reprise assistée</h3><p>Nous importons votre existant avec vous pendant le mois d'essai.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec demo-sec" id="demo" aria-labelledby="demoT">
+  <div class="wrap">
+    <span class="eyebrow">Démo guidée</span>
+    <h2 id="demoT" style="margin-top:12px">Faites une paie complète, en quatre étapes.</h2>
+    <p class="lead" style="margin-top:14px">Données fictives, aucun compte à créer. Choisissez votre profil et suivez le guide.</p>
+
+    <div class="demo" id="demoBox">
+      <div class="demo-top on-dark">
+        <b style="font:700 1.05rem var(--font-d)">Vous êtes…</b>
+        <div class="profiles" role="radiogroup" aria-label="Votre profil" id="profiles">
+          <button class="chip" role="radio" aria-checked="true" data-p="drh" type="button">Responsable RH</button>
+          <button class="chip" role="radio" aria-checked="false" data-p="cpt" type="button">Comptable ou cabinet</button>
+          <button class="chip" role="radio" aria-checked="false" data-p="dir" type="button">Dirigeant</button>
+        </div>
+        <p id="profileLine">Vous suivez les équipes au quotidien : voyez comment la paie se prépare sans ressaisie.</p>
+      </div>
+
+      <ol class="steps" id="stepsNav" aria-label="Progression">
+        <li aria-current="step"><span>1</span>Importer</li>
+        <li><span>2</span>Paramétrer</li>
+        <li><span>3</span>Calculer</li>
+        <li><span>4</span>Régler</li>
+      </ol>
+
+      <div class="panel" data-panel="0">
+        <h3>Importez vos salariés</h3>
+        <p>Déposez votre fichier Excel. Liggeey lit les colonnes, signale ce qui manque et vous laisse corriger sur place.</p>
+        <div class="drop">
+          <p>Glissez un fichier ici, ou chargez un exemple de six salariés fictifs.</p>
+          <button class="btn btn-dark" type="button" id="loadBtn">Charger l'exemple</button>
+        </div>
+        <div class="tbl-wrap" id="impWrap" hidden>
+          <table class="tbl">
+            <thead><tr><th>Salarié</th><th>Poste</th><th>Embauche</th><th class="r">Salaire de base</th></tr></thead>
+            <tbody id="impBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="panel" data-panel="1" hidden>
+        <h3>Vérifiez le paramétrage</h3>
+        <p>Période, mode de règlement, validations. Les réglages courants sont déjà posés, vous ajustez seulement ce qui change chez vous.</p>
+        <span class="field-label" id="payLbl">Mode de règlement des salaires</span>
+        <div class="choices" role="radiogroup" aria-labelledby="payLbl" id="payChoices">
+          <button class="chip light" role="radio" aria-checked="true" data-m="Mobile money (Wave, Orange Money)" type="button">Mobile money</button>
+          <button class="chip light" role="radio" aria-checked="false" data-m="Virement bancaire" type="button">Virement bancaire</button>
+          <button class="chip light" role="radio" aria-checked="false" data-m="Espèces ou chèque" type="button">Espèces ou chèque</button>
+        </div>
+        <div class="tbl-wrap">
+          <table class="tbl"><tbody>
+            <tr><td>Période</td><td class="r"><b>Novembre 2026</b>, mensuelle</td></tr>
+            <tr><td>Approbation de la paie</td><td class="r">Rôle paie ou administrateur</td></tr>
+            <tr><td>Salariés concernés</td><td class="r"><b>6</b></td></tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div class="panel" data-panel="2" hidden>
+        <h3>Lancez la paie du mois</h3>
+        <p>Calcul, revue, approbation : chaque étape est tracée, et la personne qui prépare n'est pas celle qui approuve.</p>
+        <div class="pipe" id="payPipe" aria-hidden="true"><b class="on">Brouillon</b><b>Calculée</b><b>En revue</b><b>Approuvée</b></div>
+        <div class="bar" id="barWrap" hidden><i id="barFill"></i></div>
+        <div class="tbl-wrap" id="resWrap" hidden>
+          <table class="tbl">
+            <thead><tr><th>Salarié</th><th class="r">Brut</th><th class="r">Retenues (taux fictif)</th><th class="r">Net</th></tr></thead>
+            <tbody id="resBody"></tbody>
+            <tfoot><tr><td>Masse nette</td><td class="r" id="sumBrut"></td><td class="r" id="sumRet"></td><td class="r" id="sumNet"></td></tr></tfoot>
+          </table>
+        </div>
+        <div style="margin-top:16px"><button class="btn btn-cta" type="button" id="payBtn">Calculer la paie</button></div>
+      </div>
+
+      <div class="panel" data-panel="3" hidden>
+        <h3>Réglez et partagez les bulletins</h3>
+        <p>Aperçu du règlement par lot : <b id="modeOut">Mobile money</b>. Aucun paiement réel n'est émis dans cette démo.</p>
+        <div class="tbl-wrap">
+          <table class="tbl"><thead><tr><th>Salarié</th><th class="r">Net à régler</th><th class="r">Statut</th></tr></thead><tbody id="payBody"></tbody></table>
+        </div>
+        <div style="margin-top:16px"><button class="btn btn-cta" type="button" id="sendBtn">Lancer le règlement</button></div>
+        <div class="final" id="finalBox" hidden>
+          <b style="font:800 1.1rem var(--font-d)">Paie réglée, bulletins archivés.</b>
+          <p style="margin-top:6px;color:var(--soft)">Période clôturée, piste d'audit complète. Prêt à le faire avec vos vrais salariés ?</p>
+          <div class="hero-cta" style="margin-top:14px"><a class="btn btn-cta" href="#contact">Démarrer mon mois d'essai</a><button class="btn btn-ghost" type="button" id="restartBtn" style="color:var(--encre)">Refaire la démo</button></div>
+        </div>
+      </div>
+
+      <div class="demo-foot">
+        <p class="msg" id="demoMsg" role="status" aria-live="polite"></p>
+        <div class="demo-actions">
+          <button class="btn btn-ghost" type="button" id="backBtn" style="color:var(--encre);min-height:44px">Retour</button>
+          <button class="btn btn-dark" type="button" id="nextBtn" style="min-height:44px">Continuer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="liggeey" aria-labelledby="liggT">
+  <div class="wrap">
+    <span class="eyebrow">Liggeey · RH et paie</span>
+    <h2 id="liggT" style="margin-top:12px">Tout ce qu'une équipe RH fait chaque mois.</h2>
+    <p class="lead" style="margin-top:14px">« Liggeey » veut dire travail en wolof. Le module couvre le cycle complet, de l'embauche au bulletin.</p>
+    <div class="mod-grid">
+      <div class="mod rv"><h3>Paie et bulletins</h3><p>Heures supplémentaires, primes, retenues, prêts avec plafond de retenue, prorata en cas d'entrée ou de sortie en cours de mois.</p></div>
+      <div class="mod rv"><h3>Congés et absences</h3><p>Soldes par salarié, demandes, impact automatique sur la paie du mois.</p></div>
+      <div class="mod rv"><h3>Présences</h3><p>Saisie des présences et variables du mois, avec contrôle avant calcul.</p></div>
+      <div class="mod rv"><h3>Contrats et dossiers</h3><p>Fiche salarié, déclaration d'embauche, documents conservés dans un espace privé.</p></div>
+      <div class="mod rv"><h3>Rôles et validations</h3><p>Administrateur, RH, paie, manager, salarié : chacun voit et fait ce qui le concerne.</p></div>
+      <div class="mod rv"><h3>Piste d'audit</h3><p>Chaque changement est journalisé. Une période clôturée ne se modifie plus.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="flow on-dark" aria-labelledby="flowT">
+  <div class="wrap">
+    <span class="eyebrow">Un cycle de paie maîtrisé</span>
+    <h2 id="flowT" style="margin-top:12px;font-size:clamp(1.6rem,4vw,2.4rem)">Sept statuts, une seule direction.</h2>
+    <div class="flow-line" id="flowLine">
+      <div>Brouillon</div><div>Calculée</div><div>En revue</div><div>Approuvée</div><div>Validée</div><div>Payée</div><div>Clôturée</div>
+    </div>
+  </div>
+</section>
+
+<section class="sec trial on-dark" id="essai" aria-labelledby="essT">
+  <div class="wrap">
+    <span class="eyebrow">Un mois d'essai, avec nous</span>
+    <h2 id="essT" style="margin-top:12px">On reprend votre existant avec vous.</h2>
+    <p class="lead" style="margin-top:14px">Vous ne partez pas d'une page blanche. Pendant trente jours, notre équipe vous aide à migrer et à vérifier vos premiers bulletins.</p>
+    <ul class="tl">
+      <li class="rv"><b>Jour 1</b><p>Votre espace est ouvert. Vous importez un premier fichier avec nous.</p></li>
+      <li class="rv"><b>Semaine 1</b><p>Reprise de vos salariés, contrats et soldes depuis Excel ou votre ancien logiciel.</p></li>
+      <li class="rv"><b>Semaines 2 et 3</b><p>Première paie en parallèle de la vôtre, écarts expliqués ligne par ligne.</p></li>
+      <li class="rv"><b>Jour 30</b><p>Vous décidez. Vous gardez vos données, que vous continuiez ou non.</p></li>
+    </ul>
+    <div class="hero-cta"><a class="btn btn-cta" href="#contact">Réserver mon mois d'essai</a></div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="suiteT">
+  <div class="wrap">
+    <span class="eyebrow">La suite Salya</span>
+    <h2 id="suiteT" style="margin-top:12px">Un outil aujourd'hui, une suite demain.</h2>
+    <div class="suite">
+      <div class="card live rv"><span class="tag ok">Disponible</span><h3 style="margin-top:12px">Liggeey</h3><p>RH et paie. C'est ici que tout commence.</p><a href="#demo" class="btn btn-dark" style="min-height:44px">Voir la démo</a></div>
+      <div class="card rv"><span class="tag soon">Bientôt</span><h3 style="margin-top:12px">Comptabilité</h3><p>Écritures, rapprochements et états financiers, reliés à la paie.</p><a href="#contact" class="btn btn-ghost" style="min-height:44px;color:var(--encre)">Prévenez-moi</a></div>
+      <div class="card rv"><span class="tag soon">Bientôt</span><h3 style="margin-top:12px">Autres modules</h3><p>Dites-nous ce qui vous manque le plus, nous construisons dans cet ordre.</p><a href="#contact" class="btn btn-ghost" style="min-height:44px;color:var(--encre)">Donner mon avis</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="comparatif" style="background:var(--sable-2)" aria-labelledby="cmpT">
+  <div class="wrap">
+    <span class="eyebrow">Comparatif</span>
+    <h2 id="cmpT" style="margin-top:12px">Face aux logiciels propriétaires classiques.</h2>
+    <div class="cmp-wrap rv">
+      <table class="cmp">
+        <thead><tr><th scope="col">Critère</th><th scope="col">Logiciels propriétaires classiques</th><th scope="col" class="us">Liggeey</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Mise en route</th><td>Souvent un projet de plusieurs semaines, avec un consultant.</td><td class="us">Objectif : première paie dans la journée, sans consultant.</td></tr>
+          <tr><th scope="row">Reprise de l'existant</th><td>À votre charge, ou en prestation payante.</td><td class="us">Accompagnée pendant le mois d'essai.</td></tr>
+          <tr><th scope="row">Coût de départ</th><td>Licence et déploiement à l'avance.</td><td class="us">Abonnement mensuel, un mois offert.</td></tr>
+          <tr><th scope="row">Langue et monnaie</th><td>Selon l'éditeur et le pays.</td><td class="us">Français et FCFA dès l'origine.</td></tr>
+          <tr><th scope="row">Règlement des salaires</th><td>Souvent traité hors du logiciel.</td><td class="us">Règlement par lot préparé dans l'outil (en cours de finalisation).</td></tr>
+          <tr><th scope="row">Contrôles</th><td>Variables selon les modules achetés.</td><td class="us">Validation par rôles, piste d'audit, périodes verrouillées.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fine">Comparatif indicatif sur des pratiques courantes du marché. À préciser avec les offres réelles de chaque concurrent avant publication.</p>
+  </div>
+</section>
+
+<section class="sec" id="tarifs" aria-labelledby="tarT">
+  <div class="wrap">
+    <span class="eyebrow">Tarifs</span>
+    <h2 id="tarT" style="margin-top:12px">Un prix lisible, un mois offert.</h2>
+    <p class="lead" style="margin-top:14px">Facturation par salarié et par mois, en FCFA. Les montants ci-dessous restent à fixer.</p>
+    <div class="plans">
+      <div class="plan rv"><h3>Essentiel</h3><div class="price"><span class="ph">[X] FCFA</span><small style="font:500 .9rem var(--font-b);color:var(--soft)"> / salarié / mois</small></div>
+        <ul><li>Paie et bulletins</li><li>Congés et absences</li><li>Fiche salarié et documents</li><li>Support par WhatsApp</li></ul>
+        <a class="btn btn-ghost" href="#contact" style="color:var(--encre)">Démarrer l'essai</a></div>
+      <div class="plan hot rv"><span class="tag" style="align-self:flex-start">Le plus choisi</span><h3>Pro</h3><div class="price"><span class="ph">[Y] FCFA</span><small style="font:500 .9rem var(--font-b);color:var(--soft)"> / salarié / mois</small></div>
+        <ul><li>Tout Essentiel</li><li>Présences et variables du mois</li><li>Rôles, validations et piste d'audit</li><li>Prêts, heures supplémentaires, prorata</li></ul>
+        <a class="btn btn-cta" href="#contact">Démarrer l'essai</a></div>
+      <div class="plan rv"><h3>Entreprise et cabinets</h3><div class="price" style="font-size:1.5rem">Sur devis</div>
+        <ul><li>Plusieurs entités ou clients</li><li>Accompagnement dédié</li><li>Paramétrage par convention</li><li>Formation de vos équipes</li></ul>
+        <a class="btn btn-ghost" href="#contact" style="color:var(--encre)">Parler à l'équipe</a></div>
+    </div>
+    <div class="pack rv"><div><b style="font:800 1.1rem var(--font-d)">Pack Démarrage</b><p style="color:var(--soft)">Reprise de l'existant, paramétrage et formation, en forfait unique : <span class="ph">[Z] FCFA</span></p></div><a class="btn btn-dark" href="#contact">Demander le détail</a></div>
+  </div>
+</section>
+
+<section class="sec" id="faq" style="background:var(--sable-2)" aria-labelledby="faqT">
+  <div class="wrap">
+    <span class="eyebrow">Questions fréquentes</span>
+    <h2 id="faqT" style="margin-top:12px">Avant de vous lancer.</h2>
+    <div class="faq">
+      <details><summary>Combien de temps pour faire ma première paie ?</summary><p>Notre objectif est une première paie dans la journée pour une petite équipe, avec vos fichiers existants. Pour une structure plus grande, nous planifions la reprise avec vous pendant le mois d'essai.</p></details>
+      <details><summary>Puis-je reprendre mes salariés depuis Excel ?</summary><p>Oui. Vous déposez votre fichier, Liggeey signale les informations manquantes et vous les corrigez à l'écran. Notre équipe vous accompagne.</p></details>
+      <details><summary>Les règles de paie du Sénégal sont-elles à jour ?</summary><p>Les paramètres sont tenus à jour par notre équipe à partir des textes en vigueur. La liste détaillée et sa date de dernière mise à jour seront publiées ici avant le lancement. <span class="ph">[à valider]</span></p></details>
+      <details><summary>Que deviennent mes données si j'arrête après l'essai ?</summary><p>Elles restent les vôtres. Vous pourrez les récupérer, que vous continuiez ou non. <span class="ph">[engagement à valider]</span></p></details>
+      <details><summary>Et pour plusieurs entreprises ou plusieurs clients ?</summary><p>L'offre Entreprise et cabinets est prévue pour cela. Parlez-nous de votre organisation et nous préparons un essai adapté.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="sec contact on-dark" id="contact" aria-labelledby="ctT">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Parlons de votre équipe</span>
+      <h2 id="ctT" style="margin-top:12px">Réservez votre mois d'essai.</h2>
+      <p class="lead" style="margin-top:14px">Dites-nous qui vous êtes et combien de salariés vous gérez. Nous vous écrivons pour ouvrir votre espace.</p>
+      <p style="margin-top:20px;color:#C9C7DA">WhatsApp : <span class="ph" style="color:var(--mangue);border-color:var(--mangue)">+221 [numéro]</span><br>Dakar, Sénégal</p>
+    </div>
+    <div>
+      <form class="card" id="trialForm" novalidate>
+        <div><label for="fName">Votre nom</label><input id="fName" name="name" type="text" autocomplete="name" placeholder="Awa Ndiaye"></div>
+        <div><label for="fCo">Entreprise ou cabinet</label><input id="fCo" name="company" type="text" autocomplete="organization" placeholder="Nom de la structure"></div>
+        <div><label for="fSize">Nombre de salariés</label>
+          <select id="fSize" name="size"><option>1 à 20</option><option>21 à 100</option><option>101 à 500</option><option>Plus de 500</option><option>Cabinet, plusieurs clients</option></select></div>
+        <div><label for="fWa">Numéro WhatsApp</label><input id="fWa" name="wa" type="text" inputmode="tel" autocomplete="tel" placeholder="+221 77 000 00 00"></div>
+        <button class="btn btn-cta" type="submit">Préparer ma demande</button>
+        <div class="sent" id="sentBox" role="status" aria-live="polite">
+          <b>Maquette : rien n'est envoyé pour l'instant.</b>
+          <pre id="sentTxt"></pre>
+          <button class="btn btn-dark" type="button" id="copyBtn" style="min-height:44px">Copier le message</button>
+          <span id="copyOk" style="margin-left:10px;font-weight:700;color:var(--baobab)"></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#top"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="2" y="2" width="28" height="28" rx="8" fill="#2F3A8F"/><path d="M16 6l8 10-8 10-8-10z" fill="none" stroke="#FAF5EC" stroke-width="2"/><path d="M16 11l4 5-4 5-4-5z" fill="#F5B83D"/></svg>Salya</a>
+    <p>Salya, la suite de gestion pour les entreprises d'Afrique de l'Ouest. Liggeey, RH et paie.</p>
+    <p>Mentions légales, confidentialité, conditions d'utilisation : <span class="ph" style="color:var(--mangue);border-color:var(--mangue)">[à rédiger]</span></p>
+    <p>Maquette de travail. Les salariés, montants et taux affichés sont fictifs.</p>
+  </div>
+</footer>
+
+<a class="wa" href="#contact">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.2-4.1A8 8 0 1112 20a8 8 0 01-3.9-1z"/><path d="M9 9.5c.3 2 2.5 4.2 4.5 4.5l1.3-1.3-1.8-1-.8.7a3.6 3.6 0 01-1.6-1.6l.7-.8-1-1.8z"/></svg>
+  WhatsApp
+</a>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function fmt(n){ return Math.round(n).toLocaleString('fr-FR'); }
+  function $(s,r){ return (r||document).querySelector(s); }
+  function $$(s,r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); }
+
+  var mb=$('#menuBtn'), mm=$('#mobileMenu');
+  mb.addEventListener('click',function(){
+    var o=mm.classList.toggle('open'); mb.setAttribute('aria-expanded',o?'true':'false');
+  });
+  $$('#mobileMenu a').forEach(function(a){ a.addEventListener('click',function(){ mm.classList.remove('open'); mb.setAttribute('aria-expanded','false'); }); });
+
+  var rv=$$('.rv');
+  if('IntersectionObserver' in window && !reduce){
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); },{threshold:.12});
+    rv.forEach(function(el){ io.observe(el); });
+  } else { rv.forEach(function(el){ el.classList.add('in'); }); }
+
+  if(!reduce){
+    $$('[data-count]').forEach(function(el){
+      var to=+el.getAttribute('data-count'), t0=null, d=1300;
+      function step(t){ if(!t0)t0=t; var p=Math.min((t-t0)/d,1), e=1-Math.pow(1-p,3); el.textContent=fmt(to*e); if(p<1)requestAnimationFrame(step); else el.textContent=fmt(to); }
+      el.textContent='0'; requestAnimationFrame(step);
+    });
+  }
+
+  var flow=$$('#flowLine div'), fi=0, fTimer=null;
+  function paintFlow(){ flow.forEach(function(d,i){ d.className = i===fi?'on':(i<fi?'past':''); }); }
+  function tickFlow(){ fi=(fi+1)%flow.length; paintFlow(); }
+  paintFlow();
+  if(!reduce && 'IntersectionObserver' in window){
+    var fo=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ if(!fTimer) fTimer=setInterval(tickFlow,1100);} else { clearInterval(fTimer); fTimer=null; } }); },{threshold:.3});
+    fo.observe($('#flowLine'));
+  } else { fi=flow.length-1; paintFlow(); }
+
+  var EMP=[
+    {n:'Awa Ndiaye',p:'Comptable',d:'12/03/2022',b:450000,pr:25000},
+    {n:'Moussa Sow',p:'Chauffeur',d:'05/09/2021',b:250000,pr:10000},
+    {n:'Fatou Diop',p:'Assistante RH',d:'18/01/2023',b:380000,pr:0},
+    {n:'Ibrahima Fall',p:'Technicien',d:'02/06/2020',b:320000,pr:15000},
+    {n:'Mariama Ba',p:'Responsable achats',d:'21/11/2019',b:520000,pr:30000},
+    {n:'Cheikh Gueye',p:'Magasinier',d:'',b:230000,pr:5000}
+  ];
+  var RATE=0.18;
+  var PROFILE={
+    drh:'Vous suivez les équipes au quotidien : voyez comment la paie se prépare sans ressaisie.',
+    cpt:'Vous tenez la paie de plusieurs structures : voyez comment importer, contrôler et approuver sans vous perdre.',
+    dir:'Vous voulez de la visibilité sur la masse salariale : voyez la paie se calculer et se valider par rôles.'
+  };
+  var S={step:0,imported:false,fixed:false,payMode:'Mobile money (Wave, Orange Money)',stage:0,timer:null};
+  var panels=$$('[data-panel]'), steps=$$('#stepsNav li'), msg=$('#demoMsg');
+  var back=$('#backBtn'), next=$('#nextBtn');
+
+  function say(t){ msg.textContent=t||''; }
+  function buildPay(){
+    $('#payBody').innerHTML=EMP.map(function(e,i){
+      return '<tr><td><b>'+e.n+'</b></td><td class="r">'+fmt((e.b+e.pr)*(1-RATE))+' FCFA</td><td class="r"><span class="st wait" id="ps'+i+'">En attente</span></td></tr>';
+    }).join('');
+  }
+  function show(i){
+    S.step=i;
+    panels.forEach(function(p,k){ p.hidden = k!==i; });
+    steps.forEach(function(li,k){
+      li.removeAttribute('aria-current'); li.className = k<i?'done':'';
+      if(k===i) li.setAttribute('aria-current','step');
+      li.firstChild.textContent = k<i?'✓':String(k+1);
+    });
+    back.style.visibility = i===0?'hidden':'visible';
+    next.style.display = i===3?'none':'';
+    say('');
+    if(i===3){ $('#modeOut').textContent=S.payMode; buildPay(); }
+  }
+
+  $$('#profiles .chip').forEach(function(b){
+    b.addEventListener('click',function(){
+      $$('#profiles .chip').forEach(function(c){ c.setAttribute('aria-checked', c===b?'true':'false'); });
+      $('#profileLine').textContent=PROFILE[b.getAttribute('data-p')];
+    });
+  });
+  $$('#payChoices .chip').forEach(function(b){
+    b.addEventListener('click',function(){
+      $$('#payChoices .chip').forEach(function(c){ c.setAttribute('aria-checked', c===b?'true':'false'); });
+      S.payMode=b.getAttribute('data-m');
+    });
+  });
+
+  function renderImp(){
+    $('#impBody').innerHTML=EMP.map(function(e,i){
+      var miss=(!e.d && !S.fixed), date=e.d||(S.fixed?'02/03/2025':'');
+      var cell = miss ? '<span class="st run">Date manquante</span> <button type="button" class="fixbtn" data-fix="1">Corriger</button>' : date;
+      return '<tr class="rowin'+(miss?' warn':'')+'" style="animation-delay:'+(i*70)+'ms"><td><b>'+e.n+'</b></td><td>'+e.p+'</td><td>'+cell+'</td><td class="r">'+fmt(e.b)+' FCFA</td></tr>';
+    }).join('');
+    $('#impWrap').hidden=false;
+    var f=$('[data-fix]'); if(f){ f.addEventListener('click',function(){ S.fixed=true; renderImp(); say('Date corrigée. Les six salariés sont prêts.'); }); }
+  }
+  $('#loadBtn').addEventListener('click',function(){
+    S.imported=true; S.fixed=false; renderImp();
+    say('Six salariés lus, une ligne à corriger.');
+  });
+
+  var payBtn=$('#payBtn'), pipe=$$('#payPipe b');
+  function paintPipe(){ pipe.forEach(function(b,i){ b.className = i===S.stage?'on':(i<S.stage?'past':''); }); }
+  function fillRes(){
+    var tb=0,tr=0,tn=0;
+    $('#resBody').innerHTML=EMP.map(function(e){
+      var br=e.b+e.pr, rt=br*RATE, nt=br-rt; tb+=br; tr+=rt; tn+=nt;
+      return '<tr class="rowin"><td><b>'+e.n+'</b></td><td class="r">'+fmt(br)+'</td><td class="r">'+fmt(rt)+'</td><td class="r"><b>'+fmt(nt)+'</b></td></tr>';
+    }).join('');
+    $('#sumBrut').textContent=fmt(tb); $('#sumRet').textContent=fmt(tr); $('#sumNet').textContent=fmt(tn)+' FCFA';
+    $('#resWrap').hidden=false;
+  }
+  payBtn.addEventListener('click',function(){
+    if(S.stage===0){
+      var bw=$('#barWrap'), bf=$('#barFill'), p=0; bw.hidden=false; payBtn.disabled=true; say('Calcul en cours…');
+      var inc = reduce?100:17;
+      clearInterval(S.timer);
+      S.timer=setInterval(function(){
+        p=Math.min(p+inc,100); bf.style.width=p+'%';
+        if(p>=100){ clearInterval(S.timer); bw.hidden=true; S.stage=1; paintPipe(); fillRes(); payBtn.disabled=false; payBtn.textContent='Envoyer en revue'; say('Paie calculée pour six salariés.'); }
+      },reduce?10:120);
+    } else if(S.stage===1){
+      S.stage=2; paintPipe(); payBtn.textContent='Approuver (rôle paie)'; say('En revue : une autre personne doit approuver.');
+    } else if(S.stage===2){
+      S.stage=3; paintPipe(); payBtn.disabled=true; payBtn.textContent='Paie approuvée'; say('Approuvée. Vous pouvez passer au règlement.');
+    }
+  });
+
+  $('#sendBtn').addEventListener('click',function(){
+    var b=this; b.disabled=true; var i=0;
+    say('Règlement en cours (démo).');
+    function one(){
+      if(i>0){ var prev=$('#ps'+(i-1)); prev.className='st ok'; prev.textContent='Réglé'; }
+      if(i<EMP.length){ var cur=$('#ps'+i); cur.className='st run'; cur.textContent='En cours'; i++; setTimeout(one,reduce?20:420); }
+      else { $('#finalBox').hidden=false; say('Paie réglée. Bulletins archivés.'); }
+    }
+    one();
+  });
+
+  next.addEventListener('click',function(){
+    if(S.step===0){
+      if(!S.imported){ say('Chargez d’abord l’exemple pour continuer.'); return; }
+      if(!S.fixed){ say('Corrigez la ligne signalée en jaune pour continuer.'); return; }
+    }
+    if(S.step===2 && S.stage<3){ say('Menez la paie jusqu’à l’approbation pour continuer.'); return; }
+    show(Math.min(S.step+1,3));
+  });
+  back.addEventListener('click',function(){ show(Math.max(S.step-1,0)); });
+  $('#restartBtn').addEventListener('click',function(){
+    clearInterval(S.timer);
+    S.imported=false; S.fixed=false; S.stage=0;
+    $('#impWrap').hidden=true; $('#resWrap').hidden=true; $('#barWrap').hidden=true; $('#finalBox').hidden=true;
+    payBtn.disabled=false; payBtn.textContent='Calculer la paie'; $('#sendBtn').disabled=false; paintPipe();
+    show(0); document.getElementById('demo').scrollIntoView({behavior:reduce?'auto':'smooth'});
+  });
+  show(0); paintPipe();
+
+  $('#trialForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    var n=$('#fName').value.trim()||'[nom]', c=$('#fCo').value.trim()||'[entreprise]', s=$('#fSize').value, w=$('#fWa').value.trim()||'[WhatsApp]';
+    var t='Bonjour, je souhaite démarrer le mois d’essai Salya (Liggeey).\nNom : '+n+'\nEntreprise : '+c+'\nSalariés : '+s+'\nWhatsApp : '+w;
+    $('#sentTxt').textContent=t; $('#sentBox').classList.add('show'); $('#copyOk').textContent='';
+  });
+  $('#copyBtn').addEventListener('click',function(){
+    var t=$('#sentTxt').textContent;
+    try{ navigator.clipboard.writeText(t).then(function(){ $('#copyOk').textContent='Copié'; },function(){ $('#copyOk').textContent='Copie refusée, sélectionnez le texte'; }); }
+    catch(err){ $('#copyOk').textContent='Copie refusée, sélectionnez le texte'; }
+  });
+})();
+</script>
+</body>
+</html>

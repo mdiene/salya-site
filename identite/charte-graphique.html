@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Charte graphique Salya, version 1.1</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:var(--salya-sable);color:var(--salya-encre);font:400 16px/1.6 var(--salya-font-texte)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+header.top{background:var(--salya-nuit);color:var(--salya-sable);padding:48px 0}
+header.top img{height:56px}
+h1,h2,h3{font-family:var(--salya-font-titres);font-weight:700;letter-spacing:-.02em;margin:0}
+h1{font-size:clamp(32px,6vw,52px);line-height:1.05;margin-top:24px}
+h2{font-size:32px;line-height:1.15;margin-top:80px;padding-top:24px;border-top:1px solid var(--salya-brume)}
+h2 small{display:block;font:500 14px var(--salya-font-texte);color:var(--salya-ardoise);margin-bottom:8px;letter-spacing:0}
+h3{font-size:20px;margin:32px 0 8px}
+p{margin:8px 0;max-width:68ch}
+.muted{color:var(--salya-ardoise)}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:16px}
+.card{background:#fff;border:1px solid var(--salya-brume);border-radius:var(--salya-r-grand);padding:20px}
+.logo-box{border-radius:var(--salya-r-moyen);padding:24px;display:flex;align-items:center;justify-content:center;min-height:140px;border:1px solid var(--salya-brume)}
+.logo-box img{max-width:100%}
+.nuit{background:var(--salya-nuit);border-color:var(--salya-nuit)}
+table{width:100%;border-collapse:collapse;margin-top:16px;background:#fff;border:1px solid var(--salya-brume)}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--salya-brume);vertical-align:top;font-size:15px}
+th{background:var(--salya-sable-clair);font-weight:600}
+.sw{height:72px;border-radius:var(--salya-r-petit);border:1px solid rgba(0,0,0,.08);margin-bottom:10px}
+code,.mono{font-family:var(--salya-font-mono);font-size:13px}
+pre{background:var(--salya-nuit);color:var(--salya-sable);padding:16px;border-radius:var(--salya-r-moyen);overflow:auto;font:400 13px/1.5 var(--salya-font-mono)}
+.yes{color:#14543F;font-weight:600}.no{color:#8C2F12;font-weight:600}
+.btn{display:inline-block;padding:12px 24px;border-radius:var(--salya-r-moyen);font:600 16px var(--salya-font-texte);text-decoration:none}
+.btn-p{background:var(--salya-laterite);color:#fff}
+.btn-s{border:1.5px solid var(--salya-encre);color:var(--salya-encre)}
+.st{display:inline-block;font-size:14px;font-weight:500;padding:2px 12px;border-radius:999px}
+.treillis{height:120px;border-radius:var(--salya-r-moyen);background:var(--salya-sable-clair) url(logos/motif_treillis_bazin.svg)}
+.a-valider{background:#FFF3D6;border:1px solid #E8C86A;border-radius:var(--salya-r-moyen);padding:20px;margin-top:16px}
+nav.toc{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:24px;font-size:15px}
+nav.toc a{color:var(--salya-sable)}
+footer{padding:48px 0;color:var(--salya-ardoise);font-size:14px}
+@media print{header.top{background:none;color:#000}nav.toc{display:none}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <img src="logos/salya_logo_inverse_nuit.svg" alt="Salya">
+  <h1>Charte graphique</h1>
+  <p>Version 1.1 · Salya, suite de gestion pour les entreprises d’Afrique de l’Ouest. Premier module : Liggeey, RH et paie.</p>
+  <nav class="toc" aria-label="Sommaire">
+    <a href="#marque">1 Marque</a><a href="#logo">2 Logo</a><a href="#couleurs">3 Couleurs</a><a href="#typo">4 Typographie</a><a href="#motif">5 Motif</a><a href="#icones">6 Visuels</a><a href="#interface">7 Interface</a><a href="#mouvement">8 Mouvement</a><a href="#applications">9 Applications</a><a href="#jetons">10 Jetons</a><a href="#valider">À valider</a>
+  </nav>
+</div></header>
+<main class="wrap">
+
+<h2 id="marque"><small>1</small>Notre marque</h2>
+<p><b>Mission.</b> Permettre à une entreprise d’Afrique de l’Ouest de faire sa paie et de gérer ses équipes en français, en FCFA, sans consultant pour démarrer.</p>
+<p><b>Promesse.</b> Première paie dans la journée pour une petite équipe, un mois d’essai offert, reprise assistée de vos fichiers existants.</p>
+<p><b>Public.</b> Responsables RH et paie, comptables et cabinets, dirigeants de PME. Mobile d’abord, WhatsApp et mobile money au quotidien.</p>
+<h3>Personnalité</h3>
+<table>
+<tr><th>Nous sommes</th><th>Nous ne sommes pas</th></tr>
+<tr><td><b>Fiables.</b> Chaque étape est tracée, chaque chiffre vérifiable.</td><td>Alarmistes ou « magiques ». Pas de promesse sans preuve.</td></tr>
+<tr><td><b>Clairs.</b> Des phrases courtes, des mots du métier.</td><td>Jargonneux. Pas d’anglicismes inutiles.</td></tr>
+<tr><td><b>Chaleureux.</b> On parle à une personne, avec le vouvoiement.</td><td>Familiers. Pas d’argot ni de blagues dans les écrans.</td></tr>
+<tr><td><b>Précis.</b> Des montants exacts, des dates, des noms de statuts.</td><td>Vagues. Pas de « solution globale », pas de superlatifs.</td></tr>
+<tr><td><b>Posés.</b> Le calme d’un outil qui ne se trompe pas.</td><td>Tape-à-l’œil. Pas d’exclamations ni d’animations gratuites.</td></tr>
+</table>
+<h3>Ton de voix</h3>
+<table>
+<tr><th class="yes">Juste</th><th class="no">À éviter</th></tr>
+<tr><td>« Votre paie de novembre est prête à être approuvée. »</td><td>« Boostez votre paie avec notre solution innovante ! »</td></tr>
+<tr><td>« Une ligne est à corriger : la date d’embauche manque. »</td><td>« Oups, quelque chose s’est mal passé. »</td></tr>
+<tr><td>« Un mois d’essai offert, avec reprise de vos fichiers. »</td><td>« Une expérience de paie sans couture. »</td></tr>
+</table>
+<h3>Vocabulaire</h3>
+<p><b>À privilégier :</b> paie, bulletin, salarié, période, approuver, régler, reprise, essai, piste d’audit, FCFA. <b>À éviter :</b> révolutionnaire, solution globale, sans effort, puissant, next-gen, « seamless ».</p>
+
+<h2 id="logo"><small>2</small>Logo</h2>
+<p>Le symbole est un carré arrondi bazin, un losange sable en trait et un losange mangue au centre. Le mot « Salya » est composé en Bricolage Grotesque 700, interlettrage resserré, converti en tracés dans les fichiers : aucune police à installer. <b>Le logo ne contient pas de latérite</b> : cette couleur est réservée aux boutons.</p>
+<div class="grid">
+  <div class="card"><div class="logo-box"><img src="logos/salya_logo_principal.svg" alt="Logo principal Salya" height="64"></div><p><b>Principal</b>, sur Sable ou blanc.<br><code>salya_logo_principal.svg</code></p></div>
+  <div class="card"><div class="logo-box nuit"><img src="logos/salya_logo_inverse_nuit.svg" alt="Logo inversé Salya" height="64"></div><p><b>Inversé</b>, sur Nuit. Le carré passe en sable pour garder le contraste.<br><code>salya_logo_inverse_nuit.svg</code></p></div>
+  <div class="card"><div class="logo-box"><img src="logos/salya_logo_monochrome.svg" alt="Logo monochrome Salya" height="64"></div><p><b>Monochrome</b>, un seul encrage (tampon, impression noir).<br><code>salya_logo_monochrome.svg</code></p></div>
+  <div class="card"><div class="logo-box"><img src="logos/salya_logo_vertical.svg" alt="Logo vertical Salya" height="110"></div><p><b>Vertical</b>, pour les formats carrés et étroits.<br><code>salya_logo_vertical.svg</code></p></div>
+  <div class="card"><div class="logo-box"><img src="logos/salya_symbole.svg" alt="Symbole Salya" height="64"> &nbsp; <img src="logos/salya_favicon.svg" alt="Favicon" height="32"></div><p><b>Symbole</b> seul et icône 32 px (favicon, icône d’application, photo de profil WhatsApp).<br><code>salya_symbole.svg</code>, <code>salya_favicon.svg</code></p></div>
+  <div class="card"><div class="logo-box"><img src="logos/liggeey_logo_module.svg" alt="Logo Liggeey" height="64"></div><p><b>Sous-marque Liggeey.</b> Même carré, losange central sable, nom en Bricolage 700 et mention « un module Salya ». Les modules suivants suivent ce gabarit.<br><code>liggeey_logo_module.svg</code></p></div>
+</div>
+<h3>Zone de protection et taille minimale</h3>
+<p>Laisser autour du logo un vide égal à la hauteur du losange central (soit un quart de la hauteur du symbole). Taille minimale : <b>symbole seul 16 px</b> (4 mm) ; <b>logo horizontal 24 px de haut</b> (8 mm en impression). En dessous, utiliser le symbole seul.</p>
+<h3>Usages interdits</h3>
+<ol>
+<li>Ajouter du latérite, du violet ou un dégradé au logo.</li>
+<li>Étirer, pencher ou faire pivoter le symbole.</li>
+<li>Changer la police du mot « Salya » ou séparer ses lettres.</li>
+<li>Placer le logo sur un fond sans contraste (par exemple le principal sur du bazin).</li>
+<li>Ajouter ombre, contour, lueur ou effet 3D.</li>
+<li>Recréer le logo à la main : toujours utiliser les fichiers SVG fournis.</li>
+</ol>
+
+<h2 id="couleurs"><small>3</small>Couleurs</h2>
+<p>L’interface reste à 90 ou 95 % neutre (sable, encre, brume). La couleur vient du bazin et de quelques accents. Répartition indicative : 60 % sable, 25 % encre, 10 % bazin, 5 % accents.</p>
+<div class="grid">
+<div class="card"><div class="sw" style="background:#2F3A8F"></div><b>Bazin</b><br><span class="mono">#2F3A8F · RGB 47 58 143</span><br>Marque, liens, tableaux, en-têtes.</div>
+<div class="card"><div class="sw" style="background:#161A3A"></div><b>Nuit</b><br><span class="mono">#161A3A · RGB 22 26 58</span><br>Fonds sombres, pied de page. Variante profonde <span class="mono">#0F1230</span>.</div>
+<div class="card"><div class="sw" style="background:#C8441F"></div><b>Latérite</b><br><span class="mono">#C8441F · RGB 200 68 31</span><br>Boutons principaux uniquement, texte blanc. Jamais en petit texte.</div>
+<div class="card"><div class="sw" style="background:#F5B83D"></div><b>Mangue</b><br><span class="mono">#F5B83D · RGB 245 184 61</span><br>Accent : cœur du symbole, mise en avant sur fond sombre. Jamais en texte sur fond clair.</div>
+<div class="card"><div class="sw" style="background:#1F7A5C"></div><b>Baobab</b><br><span class="mono">#1F7A5C · RGB 31 122 92</span><br>Validation, état réussi.</div>
+<div class="card"><div class="sw" style="background:#FAF5EC"></div><b>Sable</b><br><span class="mono">#FAF5EC · RGB 250 245 236</span><br>Fond principal. Variante <span class="mono">#F1EADC</span> pour les panneaux.</div>
+<div class="card"><div class="sw" style="background:#1A1A24"></div><b>Encre</b><br><span class="mono">#1A1A24 · RGB 26 26 36</span><br>Texte principal.</div>
+<div class="card"><div class="sw" style="background:#4A4A5A"></div><b>Ardoise</b><br><span class="mono">#4A4A5A · RGB 74 74 90</span><br>Texte secondaire, étiquettes.</div>
+<div class="card"><div class="sw" style="background:#E7DFD0"></div><b>Brume</b><br><span class="mono">#E7DFD0 · RGB 231 223 208</span><br>Traits, bordures, fonds neutres.</div>
+</div>
+<h3>Contrastes vérifiés (norme WCAG AA : 4,5 pour le texte)</h3>
+<table>
+<tr><th>Association</th><th>Ratio</th><th>Usage</th></tr>
+<tr><td>Encre sur Sable</td><td class="mono">15,9</td><td>Texte courant</td></tr>
+<tr><td>Ardoise sur Sable</td><td class="mono">8,0</td><td>Texte secondaire</td></tr>
+<tr><td>Bazin sur Sable</td><td class="mono">9,1</td><td>Titres, liens</td></tr>
+<tr><td>Sable sur Bazin</td><td class="mono">9,1</td><td>En-têtes de tableaux</td></tr>
+<tr><td>Blanc sur Latérite</td><td class="mono">4,9</td><td>Boutons principaux (texte 16 px ou plus)</td></tr>
+<tr><td>Encre sur Mangue</td><td class="mono">9,7</td><td>Pastilles d’accent</td></tr>
+<tr><td>Baobab sur Sable</td><td class="mono">4,8</td><td>Texte de validation</td></tr>
+<tr><td>Sable sur Nuit · Mangue sur Nuit</td><td class="mono">15,6 · 9,5</td><td>Fonds sombres</td></tr>
+<tr><td class="no">Latérite sur Sable</td><td class="mono">4,5</td><td>Limite : ne pas l’employer en texte</td></tr>
+<tr><td class="no">Mangue sur Sable</td><td class="mono">1,6</td><td>Interdit en texte ou en trait</td></tr>
+</table>
+<h3>Statuts</h3>
+<p>
+<span class="st" style="background:#E7DFD0;color:#1A1A24">En attente</span>
+<span class="st" style="background:#FFF3D6;color:#6B4A00">En cours</span>
+<span class="st" style="background:#D5EBE2;color:#14543F">Validé</span>
+</p>
+<p class="muted">Sept statuts de paie, dans l’ordre : Brouillon, Calculée, En revue, Approuvée, Validée, Payée, Clôturée.</p>
+
+<h2 id="typo"><small>4</small>Typographie</h2>
+<p><b>Titres :</b> Bricolage Grotesque (graisses 500 et 700). <b>Texte :</b> Figtree (400 et 500, 600 pour les boutons). <b>Chiffres et références :</b> DM Mono. Polices gratuites, licence SIL OFL (Google Fonts). Dans les montants, utiliser les chiffres tabulaires pour aligner les colonnes.</p>
+<table>
+<tr><th>Niveau</th><th>Écran (px)</th><th>Word (pt)</th><th>Police</th></tr>
+<tr><td>Titre 1</td><td>72 sur bureau, 38 sur mobile</td><td>26</td><td>Bricolage 700</td></tr>
+<tr><td>Titre 2</td><td>48 · 30</td><td>18</td><td>Bricolage 700</td></tr>
+<tr><td>Titre 3</td><td>28 · 24</td><td>14</td><td>Bricolage 700</td></tr>
+<tr><td>Chapeau</td><td>20</td><td>12</td><td>Figtree 400</td></tr>
+<tr><td>Texte</td><td>16 / 26</td><td>10,5</td><td>Figtree 400</td></tr>
+<tr><td>Légende, étiquette</td><td>13 à 14</td><td>9</td><td>Figtree 500</td></tr>
+<tr><td>Montants, références</td><td>14 à 16</td><td>10</td><td>DM Mono 500</td></tr>
+</table>
+<p>Règles : lignes de 62 caractères au plus, phrases en casse normale, pas de capitales espacées, aucun texte sous 13 px. <b>Documents Word :</b> si Bricolage Grotesque et Figtree ne sont pas installées, le repli est Calibri (titres et texte), puis Arial.</p>
+
+<h2 id="motif"><small>5</small>Motif treillis bazin</h2>
+<div class="treillis" role="img" aria-label="Motif treillis bazin"></div>
+<p>Fines diagonales croisées à 45°, trait de 1 px, couleur bazin à 14 % d’opacité, motif répétable de 32 px (<code>logos/motif_treillis_bazin.svg</code>). Sur fond sombre, remplacer le bazin par le sable à 7 %.</p>
+<p><b>Autorisé :</b> fond de page d’accueil et de bandeaux, fond de couverture de document, fond d’une section d’essai. <b>Interdit :</b> derrière du texte courant, sur un tableau, en couleur vive.</p>
+
+<h2 id="icones"><small>6</small>Icônes et visuels</h2>
+<p><b>Icônes :</b> trait de 1,8 px, bouts arrondis, 24 px, une seule couleur (encre ou bazin). Les logos de produits tiers (WhatsApp, Excel, Google Drive) gardent leurs couleurs officielles et ne sont jamais redessinés.</p>
+<p><b>Captures et interfaces :</b> données toujours fictives et signalées, noms de salariés d’exemple (Awa Ndiaye, Moussa Sow, Fatou Diop, Ibrahima Fall, Mariama Ba, Cheikh Gueye), montants en FCFA.</p>
+<p><b>Photos :</b> réelles, lumière naturelle, bureaux, ateliers et commerces d’Afrique de l’Ouest, sans visage identifiable, sans effet banque d’images. Aucune illustration générique de personnes.</p>
+
+<h2 id="interface"><small>7</small>Interface</h2>
+<p><a class="btn btn-p" href="#interface">Bouton principal</a> &nbsp; <a class="btn btn-s" href="#interface">Bouton secondaire</a></p>
+<ul>
+<li>Un seul bouton principal (latérite, texte blanc) par écran. Hauteur 44 px, texte 16 px.</li>
+<li>Rayons : petit 8 px (champs), moyen 12 px (boutons, panneaux), grand 20 px (cartes).</li>
+<li>Espacements : 4, 8, 12, 16, 24, 32, 48, 64, 96, 128 px, et aucune autre valeur.</li>
+<li>Champs de 48 px de haut, libellé visible au-dessus, message d’erreur sous le champ, qui dit quoi écrire.</li>
+<li>Focus visible : anneau de 2 px de la couleur d’action, jamais supprimé.</li>
+<li>Tableaux : en-tête sable clair, lignes séparées par un trait brume, montants alignés à droite en chiffres tabulaires.</li>
+</ul>
+
+<h2 id="mouvement"><small>8</small>Mouvement</h2>
+<p>Sobre et utile : survol d’un bouton 150 ms, changements d’état 250 ms, entrée de la page d’accueil 450 ms, une fois. Aucune carte n’apparaît au défilement. Quand le visiteur demande de réduire les animations, tout reste immobile et visible. Une animation qui dure plus de 5 secondes a un bouton pause.</p>
+
+<h2 id="applications"><small>9</small>Applications</h2>
+<h3>Signature d’e-mail</h3>
+<pre>[Prénom Nom]
+[Fonction] · Salya
+WhatsApp : [numéro WhatsApp]
+[adresse e-mail]
+Logo : salya_logo_principal (hauteur 40 px), police Figtree ou Arial 14 px</pre>
+<h3>WhatsApp et réseaux sociaux</h3>
+<p>Photo de profil : le symbole seul, sur fond bazin, carré de 640 × 640 px, avec le symbole occupant 60 % de la largeur. Bannière LinkedIn : fond Nuit avec le motif treillis à 7 % de sable, logo inversé à gauche, une phrase de promesse à droite.</p>
+<h3>Documents</h3>
+<p>Papier A4, marges de 2 cm, logo en haut à gauche, pied de page avec les mentions légales de l’entreprise et la numérotation. Mêmes polices que le texte courant (repli Calibri). Les modèles Word suivent cette charte.</p>
+<h3>Carte de visite et présentation</h3>
+<p>Carte 85 × 55 mm : recto fond sable avec le logo, verso fond Nuit avec le treillis. Présentation : fond sable pour le contenu, fond Nuit pour la couverture et les titres de chapitre.</p>
+
+<h2 id="jetons"><small>10</small>Jetons de design</h2>
+<p>Fichiers : <code>tokens.css</code> et <code>salya-tokens.json</code>. Extrait :</p>
+<pre>:root {
+  --salya-bazin: #2F3A8F;   --salya-nuit: #161A3A;
+  --salya-laterite: #C8441F; --salya-mangue: #F5B83D;
+  --salya-baobab: #1F7A5C;  --salya-sable: #FAF5EC;
+  --salya-encre: #1A1A24;   --salya-ardoise: #4A4A5A;
+  --salya-brume: #E7DFD0;
+  --salya-font-titres: "Bricolage Grotesque", Calibri, sans-serif;
+  --salya-font-texte: "Figtree", Calibri, sans-serif;
+  --salya-r-petit: 8px; --salya-r-moyen: 12px; --salya-r-grand: 20px;
+}</pre>
+
+<h2 id="valider"><small>À valider</small>Points en attente du propriétaire</h2>
+<div class="a-valider"><ul>
+<li><b>Nom et marque :</b> « Salya » et « Liggeey » n’ont pas été vérifiés (antériorité OAPI, INPI, noms de domaine).</li>
+<li><b>Raison sociale, NINEA, RCCM, adresse, e-mail, numéro WhatsApp :</b> non communiqués, remplacés par des marqueurs entre crochets dans les documents.</li>
+<li><b>Prix et TVA :</b> à fixer.</li>
+<li><b>Conformité sociale et fiscale (IPRES, CSS, impôts) :</b> aucune affirmation tant que le contenu n’est pas validé.</li>
+<li><b>Polices :</b> vérifier la licence d’usage pour l’impression si une imprimerie les intègre.</li>
+</ul></div>
+</main>
+<footer><div class="wrap">Charte Salya v1.1 · Les noms de salariés, montants et taux d’exemple sont fictifs.</div></footer>
+</body>
+</html>
