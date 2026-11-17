@@ -10,6 +10,7 @@ export default function LegalPage({ title, children }: { title: string; children
   return (
     <main id="top" className="section" style={{ minHeight: "100svh" }}>
       <div className="wrap stack-4" style={{ maxWidth: 760 }}>
+        <Link href="/" aria-label="Salya, accueil"><img src="/logos/salya_logo_principal.svg" alt="Salya" style={{ height: 52, width: "auto" }} /></Link>
         <Link className="link" href="/">Retour au site Salya</Link>
         <h1 style={{ fontSize: "var(--t-h2)" }}>{title}</h1>
         <p className="t-small muted">Dernière mise à jour : 16 novembre 2026. Projet de texte à faire relire par un juriste avant la mise en ligne.</p>

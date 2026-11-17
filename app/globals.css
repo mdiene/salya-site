@@ -216,4 +216,20 @@ main.ap > .ap-cover { min-height: 90svh; align-content: center; gap: 28px; }
 @media (min-width: 640px) and (max-width: 1279px) { .cmp-grid > .cmp-visual { min-height: var(--p-h, 420px); } }
 
 /* Sous 1280 px la carte bulletin recouvre les noms de la fenêtre : on la masque */
-@media (max-width: 1279px) { .hero__art > .ly-piece--note { display: none; } }
+@media (max-width: 1399px) { .hero__art > .ly-piece--note { display: none; } }
+
+/* Ouverture animée du logo (voir Intro.tsx) */
+.intro { position: fixed; inset: 0; z-index: 9999; display: none; background: #161a3a url(/logos/salya_symbole.svg) no-repeat center / 34vmin; touch-action: none; }
+@media (max-width: 639px) { .intro { background-size: 46vmin; } }
+.intro canvas { display: block; }
+html.intro-on { overflow: hidden; }
+html.intro-on .intro { display: block; }
+html.intro-on .nav__logo { opacity: 0; }
+html.intro-on.intro-end .nav__logo { opacity: 1; transition: opacity .5s ease; }
+html.intro-on.intro-end .intro { opacity: 0; transition: opacity .55s ease; }
+
+/* Logos plus grands */
+.nav__logo img { height: 44px !important; width: auto !important; }
+@media (max-width: 639px) { .nav__logo img { height: 38px !important; } }
+.ap-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+.ap-cta--ghost { background: transparent; border: 1px solid rgb(250 245 236 / .4); }

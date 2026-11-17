@@ -57,3 +57,9 @@ Le propriétaire fait une comptabilité avec **son propre moteur** (et non des p
 - Page /a-propos (style présentation : fond marine, barre bleue et or) : gamme Salya, fonctionnalités de Salya RH tirées du guide utilisateur du produit, ce qui arrive, guide par rôle, bouton vers la demande d accès. Liens ajoutés au menu et au pied de page.
 - Guide utilisateur : les thèmes sont listés sur la page ; le guide complet n est pas publié (dépôt privé, guide encore intitulé SOMA-RH, captures à relire). Il est remis avec l accès à la version de test. À faire : renommer le guide en Salya RH, relire les captures, puis le publier en pages /guide.
 - Salya Compta : moteur propre (décision du 17/11), affiché Prévu.
+
+## Mise à jour du 17/11 (4e passe)
+- Ouverture animée du logo (Intro.tsx, canvas, sans dépendance) : éclatement, reconstruction en spirale, vol vers l en-tête, rebond d atterrissage. Une fois par session, accueil seulement, ignorée en mouvement réduit, clic ou touche pour passer.
+- Logos agrandis (en-tête 44 px, mobile 38 px, pages légales 52 px, À propos 64 px). À propos placé en dernier dans le menu et le pied de page.
+- Lien du guide : bouton prêt, activé par la variable NEXT_PUBLIC_GUIDE_URL ; le guide n est pas public aujourd hui (route /aide derrière connexion). Prompt pour la session du produit : docs/PROMPT_GUIDE_PUBLIC.md.
+- À faire : renseigner NEXT_PUBLIC_GUIDE_URL dès que la session du produit fournit l URL ; retarder l entrée de la page jusqu à la fin de l ouverture (aujourd hui elle se joue sous l overlay).

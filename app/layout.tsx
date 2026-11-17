@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import KitScripts from "./KitScripts";
+import Intro from "./Intro";
 
 const TITLE = "Salya : la paie et les RH du Sénégal, sans tableur";
 const DESC =
@@ -54,8 +55,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               "document.documentElement.classList.add('m-enter','mo-js');setTimeout(function(){document.documentElement.classList.add('m-enter-done')},700);setTimeout(function(){document.documentElement.classList.add('mo-safe')},2500)",
           }}
         />
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{if(location.pathname==='/'&&!matchMedia('(prefers-reduced-motion: reduce)').matches&&!sessionStorage.getItem('salya-intro')){document.documentElement.classList.add('intro-on')}}catch(e){}",
+          }}
+        />
       </head>
       <body>
+        <Intro />
         {children}
         <KitScripts />
       </body>

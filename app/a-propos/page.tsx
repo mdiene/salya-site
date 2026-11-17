@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   description: "Salya, la gamme de gestion éditée par Groupe Mozaic : Salya RH (paie et RH, version de test), Salya Compta (prévu). Fonctionnalités, feuille de route et guide utilisateur.",
 };
 
+// Adresse publique du guide utilisateur, à renseigner quand elle existe (NEXT_PUBLIC_GUIDE_URL).
+const GUIDE_URL = process.env.NEXT_PUBLIC_GUIDE_URL;
+
 const GAMME = [
   ["Salya RH", "Version de test", "Paie et ressources humaines pour le Sénégal : de la fiche salarié au bulletin, en FCFA."],
   ["Salya Compta", "Prévu", "Comptabilité bâtie sur notre propre moteur, reliée à Salya RH. Aucune date annoncée."],
@@ -36,7 +39,7 @@ export default function Page() {
   return (
     <main id="top" className="ap">
       <section className="ap-slide ap-cover" aria-labelledby="ap-h">
-        <Link className="ap-logo" href="/" aria-label="Salya, retour au site"><img src="/logos/salya_logo_inverse_nuit.svg" alt="Salya" height="48" style={{ height: 48, width: "auto" }} /></Link>
+        <Link className="ap-logo" href="/" aria-label="Salya, retour au site"><img src="/logos/salya_logo_inverse_nuit.svg" alt="Salya" height="64" style={{ height: 64, width: "auto" }} /></Link>
         <h1 id="ap-h">La gamme de gestion pensée pour les entreprises du Sénégal.</h1>
         <p className="ap-sub">En français · En FCFA · Pensée pour le mobile · Version de test, données fictives</p>
         <p className="ap-meta">Présentation de la gamme · Groupe Mozaic · Dakar, Sénégal</p>
@@ -77,9 +80,9 @@ export default function Page() {
 
       <section className="ap-slide" aria-labelledby="ap-guide">
         <h2 id="ap-guide">Un guide utilisateur, par rôle.</h2>
-        <p className="ap-lead">Le guide décrit chaque écran, de la première connexion à la clôture de la paie. Il est remis avec l’accès à la version de test.</p>
+        <p className="ap-lead">Le guide décrit chaque écran, de la première connexion à la clôture de la paie. {GUIDE_URL ? "Il est en ligne, sans connexion." : "Il est remis avec l’accès à la version de test."}</p>
         <ul className="ap-pills">{GUIDE.map((g) => <li key={g}>{g}</li>)}</ul>
-        <p><Link className="ap-cta" href="/#inscription">Demander le guide et l’accès à la version de test</Link></p>
+        <p className="ap-ctas">{GUIDE_URL && <a className="ap-cta" href={GUIDE_URL}>Ouvrir le guide utilisateur</a>}<Link className={GUIDE_URL ? "ap-cta ap-cta--ghost" : "ap-cta"} href="/#inscription">Demander l’accès à la version de test</Link></p>
       </section>
 
       <footer className="ap-foot">
