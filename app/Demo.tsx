@@ -220,7 +220,7 @@ export default function Demo() {
         {step === 2 && (
           <>
             <p className="t-card"><b>Calcul de la paie du mois</b></p>
-            <p>Calcul, revue, approbation : chaque étape est tracée, et la personne qui prépare n’est pas celle qui approuve.</p>
+            <p>Calcul, revue, approbation : la paie avance par étapes, jusqu’au règlement.</p>
             <div className="pipe" aria-hidden="true">
               {STAGES.map((s, i) => (
                 <b key={s} className={i === stage ? "on" : i < stage ? "past" : ""}>{s}</b>

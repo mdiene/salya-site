@@ -8,7 +8,7 @@ export default function Page() {
     <LegalPage title="Mentions légales">
       <h2 className="t-card">Éditeur du site</h2>
       <p>
-        Le site Salya est édité par <Ph>dénomination sociale</Ph>, <Ph>forme juridique</Ph> au capital de <Ph>montant</Ph> FCFA,
+        Le site Salya est édité par Groupe Mozaic (<Ph>dénomination sociale exacte</Ph>), <Ph>forme juridique</Ph> au capital de <Ph>montant</Ph> FCFA,
         dont le siège est situé à <Ph>adresse complète</Ph>, Dakar, Sénégal.<br />
         NINEA : <Ph>numéro</Ph> · RCCM : <Ph>numéro</Ph><br />
         Directeur de la publication : <Ph>nom et fonction</Ph>

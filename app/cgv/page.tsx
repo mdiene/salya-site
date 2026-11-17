@@ -8,7 +8,7 @@ export default function Page() {
     <LegalPage title="Conditions générales de vente">
       <h2 className="t-card">1. Objet</h2>
       <p>
-        Ces conditions régissent l’abonnement au logiciel de paie et de ressources humaines Liggeey, édité par <Ph>dénomination sociale</Ph> (« l’éditeur »),
+        Ces conditions régissent l’abonnement au logiciel de paie et de ressources humaines Liggeey, édité par Groupe Mozaic (<Ph>dénomination sociale exacte</Ph>) (« l’éditeur »),
         par toute entreprise ou tout cabinet (« le client »). Elles s’appliquent à l’offre pilote décrite ci-dessous.
       </p>
       <h2 className="t-card">2. Offres et prix</h2>
@@ -28,7 +28,7 @@ export default function Page() {
       <h2 className="t-card">3. Offre pilote</h2>
       <p>
         Les prix ci-dessus sont des tarifs pilote. Certaines fonctions sont en cours de développement : déclarations officielles, règlement par lot et mobile money,
-        double authentification. Elles ne font partie du service qu’une fois annoncées comme disponibles. En échange du tarif pilote, l’éditeur peut demander au client un retour d’expérience.
+        double authentification. Elles ne font partie du service qu’une fois annoncées comme disponibles. Pendant la phase de test, le service ne traite que des données fictives. En échange du tarif pilote, l’éditeur peut demander au client un retour d’expérience.
       </p>
       <h2 className="t-card">4. Essai</h2>
       <p>Le premier mois est offert : aucun paiement n’est dû avant la fin de l’essai. Le client peut arrêter à tout moment pendant l’essai sans frais.</p>

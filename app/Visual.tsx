@@ -60,7 +60,7 @@ const FRAGMENTS = {
 
   approvals: `<div class="ui ui-notify" data-ui="notify"><ul class="ui-notify__list" data-notify-list>
     <li class="ui-note"><span class="ui-avatar ui-note__av" data-tone="4">FD</span><span class="ui-note__text"><span class="ui-note__title">Fatou Diop a préparé la paie<time>9:12</time></span><span class="ui-note__body">Novembre 2026, six salariés</span></span></li>
-    <li class="ui-note"><span class="ui-avatar ui-note__av" data-tone="1">AN</span><span class="ui-note__text"><span class="ui-note__title">Rôle paie : à approuver<time>9:30</time></span><span class="ui-note__body">Autre que le préparateur</span></span><span class="ui-btn ui-btn--sm ui-note__btn">Approuver</span></li>
+    <li class="ui-note"><span class="ui-avatar ui-note__av" data-tone="1">AN</span><span class="ui-note__text"><span class="ui-note__title">Rôle paie : à approuver<time>9:30</time></span><span class="ui-note__body">Approbation par le rôle paie</span></span><span class="ui-btn ui-btn--sm ui-note__btn">Approuver</span></li>
     <li class="ui-note"><span class="ui-note__ico"><svg class="ui-icon" viewBox="0 0 16 16"><path d="m3.5 8.4 2.8 2.8 6.2-6.4"/></svg></span><span class="ui-note__text"><span class="ui-note__title">Période clôturée<time>10:05</time></span><span class="ui-note__body">Elle ne se modifie plus</span></span></li>
   </ul></div>`,
 

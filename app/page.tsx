@@ -11,7 +11,7 @@ const ARROW = (
 
 const PILLARS = [
   ["En français", "Écrans, bulletins et aide rédigés pour les équipes RH francophones."],
-  ["Tout en FCFA", "Montants, arrondis et exports pensés pour la zone UEMOA."],
+  ["Tout en FCFA", "Montants, arrondis et exports pensés pour le Sénégal."],
   ["Pensé mobile", "Des pages légères qui restent fluides quand la connexion varie."],
   ["Reprise assistée", "Nous importons votre existant avec vous pendant le mois d’essai."],
 ];
@@ -22,7 +22,7 @@ const MODULES = [
   ["Présences", "Saisie des présences et variables du mois, avec contrôle avant calcul."],
   ["Contrats et dossiers", "Fiche salarié, déclaration d’embauche, documents en espace privé."],
   ["Rôles et validations", "Administrateur, RH, paie, manager, salarié : chacun son périmètre."],
-  ["Piste d’audit", "Chaque changement est journalisé. Une période clôturée ne se modifie plus."],
+  ["Piste d’audit", "Les modifications des données RH et de paie sont journalisées. Une période clôturée est verrouillée, sa réouverture est tracée."],
 ];
 
 const STATUTS = ["Brouillon", "Calculée", "En revue", "Approuvée", "Validée", "Payée", "Clôturée"];
@@ -52,6 +52,7 @@ const FAQ = [
   ["Comment le prix est-il calculé ?", "Au nombre de salariés payés dans le mois, avec un minimum mensuel selon la formule et des remises de volume. Aucun frais caché : la reprise de vos données est un forfait facultatif."],
   ["Que signifie « tarif pilote » ?", "Les premiers clients bénéficient d’un prix réduit pendant que nous terminons les déclarations officielles, le règlement par mobile money et la double authentification. En échange, nous vous demandons votre retour d’expérience."],
   ["Pourquoi un abonnement plutôt qu’un module acheté une fois ?", "L’abonnement comprend les mises à jour des textes, l’hébergement, le support et l’espace salarié. Un module acheté une fois ne suit pas les changements de la loi."],
+  ["Puis-je saisir mes vrais salariés dès maintenant ?", "Pas encore. Le service est en version de test, avec des données fictives, le temps d’accomplir les formalités de protection des données. Nous vous prévenons dès son ouverture aux données réelles."],
   ["Et pour plusieurs entreprises ou plusieurs clients ?", "L’offre Cabinets (en préparation) et l’offre Grandes entreprises sont prévues pour cela. Parlez-nous de votre organisation et nous préparons un essai adapté."],
 ];
 
@@ -88,15 +89,15 @@ export default function Home() {
           <div className="wrap">
             <div className="hero-text grid hero__grid">
               <div className="hero__text span-5">
-                <h1 id="hero-h">Logiciel de paie et RH : première paie en 1 jour</h1>
+                <h1 id="hero-h">La paie et les RH du Sénégal, sans tableur</h1>
                 <p className="hero__lead">
-                  Liggeey, le module RH et paie de Salya, prépare vos bulletins en une journée, sans installation ni consultant. Un mois d’essai offert, avec reprise de vos fichiers existants.
+                  Liggeey, le module RH et paie de Salya, vous fait calculer, relire, approuver et régler la paie, sans installation ni consultant. Un mois d’essai offert, avec reprise de vos fichiers existants.
                 </p>
                 <div className="btn-row">
                   <a className="btn btn--primary" href="#demo">Essayer la démo guidée{ARROW}</a>
                   <a className="btn btn--secondary" href="#inscription">Réserver un mois d’essai</a>
                 </div>
-                <p className="hero__proof">Première paie dans la journée pour une petite équipe. Intérim, gardiennage, hôtellerie, transport, nettoyage : <a className="link" href="#metiers">découvrez l’offre Verticale</a>.</p>
+                <p className="hero__proof">Intérim, gardiennage, hôtellerie, transport, nettoyage : <a className="link" href="#metiers">découvrez l’offre Verticale</a>.</p>
               </div>
               <div className="hero__art span-6 start-7" role="img" aria-label="Liggeey : la paie de novembre 2026 pour six salariés fictifs, et le bulletin d’Awa Ndiaye approuvé">
                 <div className="ly-piece ly-piece--main d-win" aria-hidden="true">
@@ -144,7 +145,7 @@ export default function Home() {
           <div className="wrap">
             <div className="grid grid--top">
               <div className="span-6 stack-4">
-                <h2 id="pourquoi-h">Paie et RH en français, <span className="muted">en FCFA, pour la zone UEMOA.</span></h2>
+                <h2 id="pourquoi-h">Paie et RH en français, <span className="muted">en FCFA, pour le Sénégal.</span></h2>
                 <ul className="rows">
                   {PILLARS.map(([t, d]) => (
                     <li key={t}><span className="rows__name">{t}</span><p>{d}</p></li>
@@ -200,10 +201,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="section statement" id="cadre" data-moment="word-highlight" aria-label="Une paie tracée">
+        <section className="section statement" id="cadre" data-moment="word-highlight" aria-label="Une paie en étapes">
           <div className="wrap">
-            <p className="t-label">Une paie tracée</p>
-            <p className="mo-wh__text">Une paie juste se calcule, se relit, <strong>s’approuve</strong> puis se règle, chaque étape tracée, et la personne qui prépare n’est jamais celle qui approuve.</p>
+            <p className="t-label">Une paie en étapes</p>
+            <p className="mo-wh__text">Une paie juste se calcule, se relit, <strong>s’approuve</strong> puis se règle. Une période clôturée est verrouillée, sa réouverture est tracée.</p>
             <div className="flow" role="list" aria-label="Les sept statuts d’une paie" style={{ marginTop: "var(--s-8)" }}>
               {STATUTS.map((s, i) => <div key={s} role="listitem" className={i === 3 ? "on" : ""}>{s}</div>)}
             </div>
@@ -234,7 +235,7 @@ export default function Home() {
                 <h2 id="suite-h">Liggeey aujourd’hui, <span className="muted">la suite Salya demain.</span></h2>
                 <ul className="rows">
                   <li><span className="rows__name">Liggeey <span className="tag ok">Disponible</span></span><p>RH et paie. C’est ici que tout commence.</p></li>
-                  <li><span className="rows__name">Déclarations officielles <span className="tag">En cours</span></span><p>Exports pour l’IPRES, la CSS et les impôts, avec un contrôle avant dépôt.</p></li>
+                  <li><span className="rows__name">Déclarations officielles <span className="tag">Prévu</span></span><p>Exports pour l’IPRES, la CSS et les impôts, avec un contrôle avant dépôt.</p></li>
                   <li><span className="rows__name">Règlement par lot et mobile money <span className="tag">Bientôt</span></span><p>Fichiers de virement, Wave et Orange Money.</p></li>
                   <li><span className="rows__name">Passerelles comptables <span className="tag">Bientôt</span></span><p>Échanges avec Sage, Odoo, SunuCompta et Excel, sans ressaisie.</p></li>
                   <li><span className="rows__name">Autres modules <span className="tag">Bientôt</span></span><p>Dites-nous ce qui vous manque le plus, nous construisons dans cet ordre.</p></li>

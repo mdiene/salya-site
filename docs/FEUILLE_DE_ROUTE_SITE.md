@@ -1,0 +1,47 @@
+# Feuille de route du site Salya (mise à jour le 17/11/2026)
+
+Source de vérité du produit : `soma-rh-main` (tableau de bord `docs/agents/TABLEAU_DE_BORD.md`, `etat.json`, fiches `relais/`).
+Règle : le site ne promet que ce que le produit fait aujourd'hui et que l'on peut prouver (règle d'accroche du produit, `docs/produit/ACCROCHES_SALYA_RH.md`).
+
+## Fait
+| Quoi | Détail |
+|---|---|
+| Correctifs démo et comparatif | Boutons pleins, espacement des étapes, texte non coupé |
+| Grille de prix pilote | Essentiel 1 200, Pro 1 500, Verticale 2 500, Cabinets 35 000 / 10 dossiers (liste d'attente), Pack Démarrage 50 000 FCFA ; remises de volume |
+| Section Verticale + lien depuis le haut de page | Intérim, gardiennage, hôtellerie, transport, nettoyage |
+| Pages légales rédigées | Mentions, confidentialité (loi 2008-12), CGV ; éditeur Groupe Mozaic ; WhatsApp +221 77 517 17 77 |
+| Alignement sur la vérité du produit (17/11) | H1 « La paie et les RH du Sénégal, sans tableur » (validé par le propriétaire) ; « première paie en 1 jour », « UEMOA », « la personne qui prépare n'est jamais celle qui approuve » et « chaque étape tracée » retirés ; journal décrit comme « les modifications des données RH et de paie » ; clôture « verrouillée, réouverture tracée » ; « Déclarations officielles » passé de « En cours » à « Prévu » (DEC-02 non tranchée) ; FAQ « vrais salariés » : version de test, données fictives ; hébergement hors Sénégal signalé |
+
+## Ce que le produit a livré et que le site peut (ou pourra) dire
+| Livré côté produit | Preuve | Sur le site |
+|---|---|---|
+| Calcul, revue, approbation, suivi des règlements | RPR-01/02, `payment_export` | Dit (accroche, démo). L'application **suit** les règlements, elle n'exécute pas de paiement |
+| Période close verrouillée, réouverture tracée | déclencheurs L3 | Dit |
+| Journal chaîné | `audit_log`, 58 tables sur 109 | Dit, formulé étroitement (CONF-18) |
+| Plusieurs sociétés isolées (étanchéité) | 21a à 21b livrés, tests verts | Pas encore dit : interface (21c) et simulation SIM-MULTI à faire. Cabinets reste « Bientôt » |
+| Sauvegarde chiffrée + restauration testée | ROAD-04 terminé | Pas dit : à ajouter après le lot SAUVEGARDE-EXPORT (formules de sauvegarde à fixer) |
+| Chiffrement des RIB, MFA admin/paie | ROAD-03 / ROAD-02 | Pas dit : lots encore « bloqués » dans `etat.json` |
+| Marque Salya RH, polices auto-hébergées | MARQUE-1 à 3 | Voir « À décider » (nom du produit) |
+
+## Bloquants avant toute ouverture à de vrais clients (porte conformité MARQUE : NO-GO définitif)
+1. CONF-15 (Critique) : transfert hors Sénégal sans accord de sous-traitance, formalité CDP non faite.
+2. Pages légales : champs du propriétaire à compléter (forme juridique, capital, siège, RCCM, NINEA, directeur de publication, hébergeurs, durées, plafond de responsabilité).
+3. C14 : inscriptions Supabase à désactiver ; C15 : confirmer par écrit qu'aucune personne réelle n'est en base ; C16 : titulaire de la marque Salya (OAPI).
+4. Tant que c'est ouvert, le site doit parler de version de test (fait dans la FAQ, la confidentialité et les CGV).
+
+## À décider (propriétaire)
+| Sujet | Pourquoi |
+|---|---|
+| Nom du produit : « Liggeey » (site) ou « Salya RH » (application, renommée le 16/11) | Aujourd'hui deux noms pour la même chose ; le site dit « Liggeey, le module RH et paie de Salya » |
+| Promesse « mois d'essai avec reprise de vos fichiers » | Incompatible avec « version de test, données fictives » tant que CONF-15 est ouvert ; la phrase reste à reformuler à l'ouverture |
+| Pro à 2 000 FCFA | À relever quand exports officiels et mobile money seront livrés (conditions §5.4 du benchmark) |
+| Tarifs de sauvegarde (Essentielle, Standard, Renforcée) | Lot SAUVEGARDE-EXPORT : à intégrer à la grille |
+
+## À faire ensuite (dans l'ordre)
+1. **Comparatif** : après les devis mystère (gabarit `reference/DEVIS_MYSTERE.md`) ; retirer « à préciser avant publication » ensuite.
+2. **Après 21c + SIM-MULTI** : ouvrir l'offre Cabinets (de « Liste d'attente » à « Disponible »), parler du cloisonnement entre sociétés (formulation du produit : « Vos données de paie, séparées de celles des autres sociétés », seulement après le test à plusieurs sociétés).
+3. **Après la réponse sur DEC-02** (formats NDAMLI et DGID) : passer « Déclarations officielles » à « En cours » puis « Disponible ».
+4. **Après SAUVEGARDE-EXPORT** : ajouter sauvegardes et exports XLSX/CSV aux formules.
+5. **Auto-héberger les polices** du site (le produit l'a fait) pour retirer la mention Google Fonts de la page de confidentialité.
+6. **Avant mise en ligne** : compléter les repères des pages légales, faire relire par un juriste, passer les pages en indexables, mettre à jour la confidentialité après les formalités CDP, relancer lint, build et captures.
+7. Remplacer le formulaire « message à copier » par un envoi réel seulement après accord sur le traitement des données (aujourd'hui rien n'est transmis, ce qui simplifie la conformité).

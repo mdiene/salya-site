@@ -2,9 +2,9 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import KitScripts from "./KitScripts";
 
-const TITLE = "Salya : logiciel de paie et RH pour les entreprises d'Afrique de l'Ouest";
+const TITLE = "Salya : la paie et les RH du Sénégal, sans tableur";
 const DESC =
-  "Liggeey, le module RH et paie de Salya : bulletins en FCFA, première paie dans la journée et un mois d'essai avec reprise de vos fichiers.";
+  "Liggeey, le module RH et paie de Salya : calcul, relecture, approbation et règlement de la paie en FCFA, congés et dossiers des salariés, un mois d'essai offert.";
 
 export const metadata: Metadata = {
   title: TITLE,
