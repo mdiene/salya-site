@@ -70,6 +70,7 @@ export default function Home() {
           <a className="nav__logo" href="#top" aria-label="Salya, accueil"><img src="/logos/salya_logo_principal.svg" alt="Salya" height="32" style={{ height: 32, width: "auto" }} /></a>
           <nav className="nav__links" aria-label="Navigation principale">
             <div className="nav__item"><a className="nav__link" href="#salya-rh">Salya RH</a></div>
+            <div className="nav__item"><a className="nav__link" href="/a-propos">À propos</a></div>
             <div className="nav__item"><a className="nav__link" href="#essai">Essai</a></div>
             <div className="nav__item"><a className="nav__link" href="#tarifs">Tarifs</a></div>
             <div className="nav__item"><a className="nav__link" href="#comparatif">Comparatif</a></div>
@@ -346,7 +347,7 @@ export default function Home() {
                 <a className="nav__logo" href="#top" aria-label="Salya, haut de page"><img src="/logos/salya_logo_inverse_nuit.svg" alt="Salya" height="32" style={{ height: 32, width: "auto" }} /></a>
                 <p className="footer__lede">La gamme Salya, éditée par Groupe Mozaic : Salya RH, Salya Compta et d’autres produits à venir.</p>
               </div>
-              <div className="span-2 footer__col"><h3>Produit</h3><ul><li><a href="#salya-rh">Salya RH</a></li><li><a href="#demo">Démo guidée</a></li><li><a href="#suite">La gamme Salya</a></li></ul></div>
+              <div className="span-2 footer__col"><h3>Produit</h3><ul><li><a href="#salya-rh">Salya RH</a></li><li><a href="/a-propos">À propos</a></li><li><a href="#demo">Démo guidée</a></li><li><a href="#suite">La gamme Salya</a></li></ul></div>
               <div className="span-2 footer__col"><h3>Offre</h3><ul><li><a href="#essai">Mois d’essai</a></li><li><a href="#tarifs">Tarifs</a></li><li><a href="#comparatif">Comparatif</a></li></ul></div>
               <div className="span-2 footer__col"><h3>Aide</h3><ul><li><a href="#faq">Questions</a></li><li><a href="#inscription">Contact</a></li></ul></div>
             </div>

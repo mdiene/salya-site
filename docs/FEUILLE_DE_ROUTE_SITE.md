@@ -51,3 +51,9 @@ Le propriétaire fait une comptabilité avec **son propre moteur** (et non des p
 5. ~~Auto-héberger les polices~~ : fait.
 6. **Avant mise en ligne** : compléter les repères des pages légales, faire relire par un juriste, passer les pages en indexables, mettre à jour la confidentialité après les formalités CDP, relancer lint, build et captures.
 7. Remplacer le formulaire « message à copier » par un envoi réel seulement après accord sur le traitement des données (aujourd'hui rien n'est transmis, ce qui simplifie la conformité).
+
+## Mise à jour du 17/11 (3e passe)
+- Chevauchements corrigés : les sections grandissent avec leur contenu (avant : hauteur fixe d un ou deux écrans, le texte débordait sur la section suivante) ; panneau du comparatif à hauteur minimale sur tablette ; carte bulletin du héros masquée sous 1280 px.
+- Page /a-propos (style présentation : fond marine, barre bleue et or) : gamme Salya, fonctionnalités de Salya RH tirées du guide utilisateur du produit, ce qui arrive, guide par rôle, bouton vers la demande d accès. Liens ajoutés au menu et au pied de page.
+- Guide utilisateur : les thèmes sont listés sur la page ; le guide complet n est pas publié (dépôt privé, guide encore intitulé SOMA-RH, captures à relire). Il est remis avec l accès à la version de test. À faire : renommer le guide en Salya RH, relire les captures, puis le publier en pages /guide.
+- Salya Compta : moteur propre (décision du 17/11), affiché Prévu.
