@@ -38,8 +38,10 @@ Règle : le site ne promet que ce que le produit fait aujourd'hui et que l'on pe
 | Promesse « mois d'essai avec reprise de vos fichiers » | Reformulée en « accès à la version de test » ; à remettre à l'ouverture aux données réelles (la grille garde « un mois offert ») |
 | Pro à 2 000 FCFA | À relever quand exports officiels et mobile money seront livrés (conditions §5.4 du benchmark) |
 | Tarifs de sauvegarde (Essentielle, Standard, Renforcée) | Lot SAUVEGARDE-EXPORT : à intégrer à la grille |
-| Salya Compta | Affiché « Prévu » dans la gamme ; le benchmark déconseillait de construire une comptabilité complète (s'interfacer avec Sage, Odoo, SunuCompta) : à arbitrer pour la feuille de route produit |
 | Logo du module | `identite/logos/liggeey_logo_module.svg` n'est plus utilisé sur le site : à retirer ou renommer dans la charte |
+
+## Décision du 17/11 : Salya Compta
+Le propriétaire fait une comptabilité avec **son propre moteur** (et non des passerelles seules). Le benchmark déconseillait de construire une compta complète : le risque est assumé. Sur le site, Salya Compta reste « Prévu » (aucune promesse de date ni de contenu tant que le produit n'existe pas) ; les « Passerelles comptables » (Sage, Odoo, SunuCompta) restent affichées comme complément. À faire côté produit : cadrage (SYSCOHADA, plan comptable, journal de paie déjà équilibré dans Salya RH), puis mise à jour de la gamme sur le site.
 
 ## À faire ensuite (dans l'ordre)
 1. **Comparatif** : après les devis mystère (gabarit `reference/DEVIS_MYSTERE.md`) ; retirer « à préciser avant publication » ensuite.
