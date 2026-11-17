@@ -1,4 +1,4 @@
-// Visuels produit des sections : fragments du kit Taste (public/assets/ui) réécrits pour Liggeey.
+// Visuels produit des sections : fragments du kit Taste (public/assets/ui) réécrits pour Salya RH.
 // Toutes les données sont fictives (maquette) ; les noms de salariés sont ceux de la démo.
 
 const CHECK = '<svg viewBox="0 0 16 16"><path d="m4.5 8.2 2.3 2.3 4.7-5"/></svg>';
@@ -14,7 +14,7 @@ const FRAGMENTS = {
   </ul></div>`,
 
   window: `<div class="ui ui-panel ui-win" data-ui="window" data-open="En revue" data-work="En calcul" data-done="Approuvée">
-  <div class="ui-win__bar"><span class="ui-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="ui-win__crumb">Liggeey <i>/</i> <b>Paie de novembre</b></span><span class="ui-spacer"></span></div>
+  <div class="ui-win__bar"><span class="ui-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="ui-win__crumb">Salya RH <i>/</i> <b>Paie de novembre</b></span><span class="ui-spacer"></span></div>
   <div class="ui-win__body">
     <nav class="ui-win__side" aria-hidden="true">
       <span class="ui-win__nav is-on">Paie<em>6</em></span><span class="ui-win__nav">Congés<em>2</em></span><span class="ui-win__nav">Présences</span><span class="ui-win__nav">Contrats</span>
@@ -53,7 +53,7 @@ const FRAGMENTS = {
   </ul></div>`,
 
   notify: `<div class="ui ui-notify" data-ui="notify"><ul class="ui-notify__list" data-notify-list>
-    <li class="ui-note"><span class="ui-avatar ui-note__av" data-tone="1">LG</span><span class="ui-note__text"><span class="ui-note__title">Liggeey · paie approuvée<time>maintenant</time></span><span class="ui-note__body">Novembre 2026, six bulletins archivés</span></span><span class="ui-btn ui-btn--sm ui-note__btn">Ouvrir</span></li>
+    <li class="ui-note"><span class="ui-avatar ui-note__av" data-tone="1">SR</span><span class="ui-note__text"><span class="ui-note__title">Salya RH · paie approuvée<time>maintenant</time></span><span class="ui-note__body">Novembre 2026, six bulletins archivés</span></span><span class="ui-btn ui-btn--sm ui-note__btn">Ouvrir</span></li>
     <li class="ui-note"><span class="ui-avatar ui-note__av" data-tone="4">CP</span><span class="ui-note__text"><span class="ui-note__title">Passerelles comptables<time>bientôt</time></span><span class="ui-note__body">Vous serez prévenu dès l’ouverture</span></span></li>
     <li class="ui-note"><span class="ui-note__ico"><svg class="ui-icon" viewBox="0 0 16 16"><path d="m3.5 8.4 2.8 2.8 6.2-6.4"/></svg></span><span class="ui-note__text"><span class="ui-note__title">Autres modules<time>vos avis</time></span><span class="ui-note__body">Dites-nous ce qui vous manque le plus</span></span></li>
   </ul></div>`,
@@ -65,7 +65,7 @@ const FRAGMENTS = {
   </ul></div>`,
 
   invoice: `<div class="ui ui-notify" data-ui="notify"><ul class="ui-notify__list" data-notify-list>
-    <li class="ui-note"><span class="ui-avatar ui-note__av" data-tone="1">LG</span><span class="ui-note__text"><span class="ui-note__title">Facture de novembre<time>6 salariés</time></span><span class="ui-note__body">1 200 FCFA par salarié, minimum 12 000</span></span></li>
+    <li class="ui-note"><span class="ui-avatar ui-note__av" data-tone="1">SR</span><span class="ui-note__text"><span class="ui-note__title">Facture de novembre<time>6 salariés</time></span><span class="ui-note__body">1 200 FCFA par salarié, minimum 12 000</span></span></li>
     <li class="ui-note"><span class="ui-avatar ui-note__av" data-tone="4">PD</span><span class="ui-note__text"><span class="ui-note__title">Pack Démarrage<time>une fois</time></span><span class="ui-note__body">Reprise, paramétrage et formation : 50 000 FCFA</span></span></li>
     <li class="ui-note"><span class="ui-note__ico"><svg class="ui-icon" viewBox="0 0 16 16"><path d="m3.5 8.4 2.8 2.8 6.2-6.4"/></svg></span><span class="ui-note__text"><span class="ui-note__title">Un mois d’essai offert<time>jour 1</time></span><span class="ui-note__body">Aucun paiement avant la fin de l’essai</span></span></li>
   </ul></div>`,

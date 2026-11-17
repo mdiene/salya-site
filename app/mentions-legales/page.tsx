@@ -19,7 +19,7 @@ export default function Page() {
       <p>Le site est hébergé par <Ph>nom de l’hébergeur, adresse</Ph>.</p>
       <h2 className="t-card">Propriété intellectuelle</h2>
       <p>
-        Les textes, images, logos, marques et éléments graphiques du site, y compris les noms Salya et Liggeey, sont protégés.
+        Les textes, images, logos, marques et éléments graphiques du site, y compris la marque Salya et ses déclinaisons (Salya RH, Salya Compta), sont protégés. Le titulaire de la marque est Groupe Mozaic.
         Toute reproduction ou réutilisation sans accord écrit préalable de l’éditeur est interdite.
       </p>
       <h2 className="t-card">Données fictives</h2>

@@ -46,7 +46,7 @@ const CMP = [
 
 const FAQ = [
   ["Combien de temps pour faire ma première paie ?", "Notre objectif est une première paie dans la journée pour une petite équipe, avec vos fichiers existants. Pour une structure plus grande, nous planifions la reprise avec vous pendant le mois d’essai."],
-  ["Puis-je reprendre mes salariés depuis Excel ?", "Oui. Vous déposez votre fichier, Liggeey signale les informations manquantes et vous les corrigez à l’écran. Notre équipe vous accompagne."],
+  ["Puis-je reprendre mes salariés depuis Excel ?", "Oui. Vous déposez votre fichier, Salya RH signale les informations manquantes et vous les corrigez à l’écran. Notre équipe vous accompagne."],
   ["Les règles de paie du Sénégal sont-elles à jour ?", "Les paramètres sont tenus à jour par notre équipe à partir des textes en vigueur. La liste détaillée et sa date de dernière mise à jour seront publiées ici avant le lancement. [à valider]"],
   ["Que deviennent mes données si j’arrête après l’essai ?", "Elles restent les vôtres. Vous pourrez les récupérer, que vous continuiez ou non. [engagement à valider]"],
   ["Comment le prix est-il calculé ?", "Au nombre de salariés payés dans le mois, avec un minimum mensuel selon la formule et des remises de volume. Aucun frais caché : la reprise de vos données est un forfait facultatif."],
@@ -69,7 +69,7 @@ export default function Home() {
           <a className="skip-link" href="#top">Aller au contenu</a>
           <a className="nav__logo" href="#top" aria-label="Salya, accueil"><img src="/logos/salya_logo_principal.svg" alt="Salya" height="32" style={{ height: 32, width: "auto" }} /></a>
           <nav className="nav__links" aria-label="Navigation principale">
-            <div className="nav__item"><a className="nav__link" href="#liggeey">Liggeey</a></div>
+            <div className="nav__item"><a className="nav__link" href="#salya-rh">Salya RH</a></div>
             <div className="nav__item"><a className="nav__link" href="#essai">Essai</a></div>
             <div className="nav__item"><a className="nav__link" href="#tarifs">Tarifs</a></div>
             <div className="nav__item"><a className="nav__link" href="#comparatif">Comparatif</a></div>
@@ -91,17 +91,17 @@ export default function Home() {
               <div className="hero__text span-5">
                 <h1 id="hero-h">La paie et les RH du Sénégal, sans tableur</h1>
                 <p className="hero__lead">
-                  Liggeey, le module RH et paie de Salya, vous fait calculer, relire, approuver et régler la paie, sans installation ni consultant. Un mois d’essai offert, avec reprise de vos fichiers existants.
+                  Salya RH, de la gamme Salya éditée par Groupe Mozaic, vous fait calculer, relire, approuver et régler la paie, sans installation ni consultant.
                 </p>
                 <div className="btn-row">
                   <a className="btn btn--primary" href="#demo">Essayer la démo guidée{ARROW}</a>
-                  <a className="btn btn--secondary" href="#inscription">Réserver un mois d’essai</a>
+                  <a className="btn btn--secondary" href="#inscription">Demander l’accès à la version de test</a>
                 </div>
-                <p className="hero__proof">Intérim, gardiennage, hôtellerie, transport, nettoyage : <a className="link" href="#metiers">découvrez l’offre Verticale</a>.</p>
+                <p className="hero__proof">Version de test : toutes les données sont fictives. Intérim, gardiennage, hôtellerie, transport, nettoyage : <a className="link" href="#metiers">découvrez l’offre Verticale</a>.</p>
               </div>
-              <div className="hero__art span-6 start-7" role="img" aria-label="Liggeey : la paie de novembre 2026 pour six salariés fictifs, et le bulletin d’Awa Ndiaye approuvé">
+              <div className="hero__art span-6 start-7" role="img" aria-label="Salya RH : la paie de novembre 2026 pour six salariés fictifs, et le bulletin d’Awa Ndiaye approuvé">
                 <div className="ly-piece ly-piece--main d-win" aria-hidden="true">
-                  <div className="d-win__bar"><span className="d-win__dots"><i></i><i></i><i></i></span><span>Liggeey · Société exemple (données fictives)</span></div>
+                  <div className="d-win__bar"><span className="d-win__dots"><i></i><i></i><i></i></span><span>Salya RH · Société exemple (données fictives)</span></div>
                   <div className="d-win__body">
                     <div className="d-side">
                       <span><i></i>Accueil</span><span><i></i>Salariés</span><span className="is-on"><i></i>Paie</span><span><i></i>Congés</span><span><i></i>Présences</span>
@@ -163,19 +163,18 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="section" id="liggeey" style={{ ["--hm" as string]: 2 }} aria-labelledby="liggeey-h">
+        <section className="section" id="salya-rh" style={{ ["--hm" as string]: 2 }} aria-labelledby="salya-rh-h">
           <div className="wrap">
             <div className="grid grid--top">
               <div className="span-6 stack-4">
-                <h2 id="liggeey-h">Six modules pour le cycle RH et paie du mois.</h2>
-                <p className="t-small muted">« Liggeey » veut dire travail en wolof.</p>
+                <h2 id="salya-rh-h">Six modules pour le cycle RH et paie du mois.</h2>
                 <ul className="rows">
                   {MODULES.map(([t, d]) => (
                     <li key={t}><span className="rows__name">{t}</span><p>{d}</p></li>
                   ))}
                 </ul>
               </div>
-              <Visual name="window" max={456} h={560} label="Fenêtre Liggeey : la paie de novembre, six salariés et leur statut" />
+              <Visual name="window" max={456} h={560} label="Fenêtre Salya RH : la paie de novembre, six salariés et leur statut" />
             </div>
           </div>
         </section>
@@ -215,13 +214,13 @@ export default function Home() {
           <div className="wrap">
             <div className="grid grid--top">
               <div className="span-6 stack-4">
-                <h2 id="essai-h">On reprend votre existant avec vous. <span className="muted">Pendant trente jours, notre équipe vous aide à migrer et à vérifier vos premiers bulletins.</span></h2>
+                <h2 id="essai-h">À l’ouverture aux données réelles, on reprend votre existant avec vous. <span className="muted">Pendant trente jours, notre équipe vous aide à migrer et à vérifier vos premiers bulletins.</span></h2>
                 <ul className="rows">
                   {TRIAL.map(([t, d]) => (
                     <li key={t}><span className="rows__name">{t}</span><p>{d}</p></li>
                   ))}
                 </ul>
-                <div className="btn-row"><a className="btn btn--primary" href="#inscription">Réserver un mois d’essai{ARROW}</a></div>
+                <div className="btn-row"><a className="btn btn--primary" href="#inscription">Demander l’accès à la version de test{ARROW}</a></div>
               </div>
               <Visual name="files" max={420} h={560} label="Fichiers repris pendant l’essai : Excel, Google Drive, Google Docs et PDF" />
             </div>
@@ -232,9 +231,10 @@ export default function Home() {
           <div className="wrap">
             <div className="grid grid--top">
               <div className="span-6 stack-4">
-                <h2 id="suite-h">Liggeey aujourd’hui, <span className="muted">la suite Salya demain.</span></h2>
+                <h2 id="suite-h">Salya RH aujourd’hui, <span className="muted">la gamme Salya demain.</span></h2>
                 <ul className="rows">
-                  <li><span className="rows__name">Liggeey <span className="tag ok">Disponible</span></span><p>RH et paie. C’est ici que tout commence.</p></li>
+                  <li><span className="rows__name">Salya RH <span className="tag ok">Version de test</span></span><p>Paie et RH. C’est ici que tout commence.</p></li>
+                  <li><span className="rows__name">Salya Compta <span className="tag">Prévu</span></span><p>Comptabilité reliée à Salya RH.</p></li>
                   <li><span className="rows__name">Déclarations officielles <span className="tag">Prévu</span></span><p>Exports pour l’IPRES, la CSS et les impôts, avec un contrôle avant dépôt.</p></li>
                   <li><span className="rows__name">Règlement par lot et mobile money <span className="tag">Bientôt</span></span><p>Fichiers de virement, Wave et Orange Money.</p></li>
                   <li><span className="rows__name">Passerelles comptables <span className="tag">Bientôt</span></span><p>Échanges avec Sage, Odoo, SunuCompta et Excel, sans ressaisie.</p></li>
@@ -256,11 +256,11 @@ export default function Home() {
               <div className="cmp-wrap span-8">
               <table className="cmp">
                 <thead>
-                  <tr><th scope="col">Critère</th><th scope="col">Logiciels propriétaires classiques</th><th scope="col" className="us">Liggeey</th></tr>
+                  <tr><th scope="col">Critère</th><th scope="col">Logiciels propriétaires classiques</th><th scope="col" className="us">Salya RH</th></tr>
                 </thead>
                 <tbody>
                   {CMP.map(([c, a, b]) => (
-                    <tr key={c}><th scope="row">{c}</th><td data-label="Logiciels classiques">{a}</td><td className="us" data-label="Liggeey">{b}</td></tr>
+                    <tr key={c}><th scope="row">{c}</th><td data-label="Logiciels classiques">{a}</td><td className="us" data-label="Salya RH">{b}</td></tr>
                   ))}
                 </tbody>
               </table>
@@ -284,9 +284,9 @@ export default function Home() {
                   <li><span className="rows__name">Pack Démarrage</span><p>Reprise de l’existant, paramétrage et formation, en forfait unique et facultatif.</p><span className="rows__value">50 000 FCFA</span></li>
                 </ul>
                 <p className="t-small muted">Remises de volume : 10 % de 11 à 30 salariés, 20 % de 31 à 75, 30 % au-delà. Les mises à jour des taux et plafonds légaux sont comprises.</p>
-                <div className="btn-row"><a className="btn btn--primary" href="#inscription">Démarrer l’essai{ARROW}</a></div>
+                <div className="btn-row"><a className="btn btn--primary" href="#inscription">Demander l’accès à la version de test{ARROW}</a></div>
               </div>
-              <Visual name="invoice" max={380} h={460} label="Aperçu d’une facture Liggeey : six salariés, 1 200 FCFA par salarié, minimum mensuel de 12 000 FCFA" />
+              <Visual name="invoice" max={380} h={460} label="Aperçu d’une facture Salya RH : six salariés, 1 200 FCFA par salarié, minimum mensuel de 12 000 FCFA" />
             </div>
           </div>
         </section>
@@ -315,8 +315,8 @@ export default function Home() {
           <div className="wrap">
             <div className="grid grid--top">
               <div className="span-6 stack-4">
-                <h2 id="inscription-h">Réservez votre mois d’essai.</h2>
-                <p className="t-lead">Dites-nous qui vous êtes et combien de salariés vous gérez. Nous vous écrivons pour ouvrir votre espace.</p>
+                <h2 id="inscription-h">Demandez votre accès à la version de test.</h2>
+                <p className="t-lead">Dites-nous qui vous êtes et combien de salariés vous gérez. Nous vous écrivons pour ouvrir votre accès à la version de test, qui ne contient que des données fictives.</p>
                 <p>WhatsApp : +221 77 517 17 77<br />Dakar, Sénégal</p>
                 <div className="grid"><Visual name="chat" max={340} h={380} className="span-12" label="Échange avec l’équipe Salya : reprise d’un fichier Excel de 18 salariés" /></div>
               </div>
@@ -344,9 +344,9 @@ export default function Home() {
             <div className="grid">
               <div className="span-6 stack-4">
                 <a className="nav__logo" href="#top" aria-label="Salya, haut de page"><img src="/logos/salya_logo_inverse_nuit.svg" alt="Salya" height="32" style={{ height: 32, width: "auto" }} /></a>
-                <p className="footer__lede">La suite de gestion pour les entreprises d’Afrique de l’Ouest. Liggeey, RH et paie.</p>
+                <p className="footer__lede">La gamme Salya, éditée par Groupe Mozaic : Salya RH, Salya Compta et d’autres produits à venir.</p>
               </div>
-              <div className="span-2 footer__col"><h3>Produit</h3><ul><li><a href="#liggeey">Liggeey</a></li><li><a href="#demo">Démo guidée</a></li><li><a href="#suite">La suite Salya</a></li></ul></div>
+              <div className="span-2 footer__col"><h3>Produit</h3><ul><li><a href="#salya-rh">Salya RH</a></li><li><a href="#demo">Démo guidée</a></li><li><a href="#suite">La gamme Salya</a></li></ul></div>
               <div className="span-2 footer__col"><h3>Offre</h3><ul><li><a href="#essai">Mois d’essai</a></li><li><a href="#tarifs">Tarifs</a></li><li><a href="#comparatif">Comparatif</a></li></ul></div>
               <div className="span-2 footer__col"><h3>Aide</h3><ul><li><a href="#faq">Questions</a></li><li><a href="#inscription">Contact</a></li></ul></div>
             </div>

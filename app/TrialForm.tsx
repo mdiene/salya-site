@@ -26,7 +26,7 @@ export default function TrialForm() {
     const co = String(f.get("company") || "").trim() || "[entreprise]";
     setCopied("");
     setText(
-      `Bonjour, je souhaite démarrer le mois d’essai Salya (Liggeey).\nNom : ${name}\nEntreprise : ${co}\nSalariés : ${f.get("size")}\nWhatsApp : ${wa}`,
+      `Bonjour, je souhaite accéder à la version de test de Salya RH.\nNom : ${name}\nEntreprise : ${co}\nSalariés : ${f.get("size")}\nWhatsApp : ${wa}`,
     );
   }
 

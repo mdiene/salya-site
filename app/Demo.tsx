@@ -147,7 +147,7 @@ export default function Demo() {
         {step === 0 && (
           <>
             <p className="t-card"><b>Import des salariés</b></p>
-            <p>Déposez votre fichier Excel. Liggeey lit les colonnes, signale ce qui manque et vous laisse corriger sur place.</p>
+            <p>Déposez votre fichier Excel. Salya RH lit les colonnes, signale ce qui manque et vous laisse corriger sur place.</p>
             <div className="drop">
               <p>Glissez un fichier ici, ou chargez un exemple de six salariés fictifs.</p>
               <button type="button" className="btn btn--primary" onClick={() => { setImported(true); setFixed(false); setMsg("Six salariés lus, une ligne à corriger."); }}>

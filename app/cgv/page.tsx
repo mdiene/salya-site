@@ -8,7 +8,7 @@ export default function Page() {
     <LegalPage title="Conditions générales de vente">
       <h2 className="t-card">1. Objet</h2>
       <p>
-        Ces conditions régissent l’abonnement au logiciel de paie et de ressources humaines Liggeey, édité par Groupe Mozaic (<Ph>dénomination sociale exacte</Ph>) (« l’éditeur »),
+        Ces conditions régissent l’abonnement au logiciel de paie et de ressources humaines Salya RH, édité par Groupe Mozaic (<Ph>dénomination sociale exacte</Ph>) (« l’éditeur »),
         par toute entreprise ou tout cabinet (« le client »). Elles s’appliquent à l’offre pilote décrite ci-dessous.
       </p>
       <h2 className="t-card">2. Offres et prix</h2>

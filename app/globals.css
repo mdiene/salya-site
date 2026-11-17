@@ -1,3 +1,8 @@
+/* Polices auto-hébergées (SIL OFL 1.1, licences dans /fonts) : aucune requête vers Google */
+@font-face { font-family: "Bricolage Grotesque"; font-style: normal; font-weight: 200 800; font-stretch: 75% 100%; font-display: swap; src: url(/fonts/bricolage-grotesque-latin-standard.woff2) format("woff2"); }
+@font-face { font-family: "Figtree"; font-style: normal; font-weight: 300 900; font-display: swap; src: url(/fonts/figtree-latin-wght-normal.woff2) format("woff2"); }
+@font-face { font-family: "DM Mono"; font-style: normal; font-weight: 400; font-display: swap; src: url(/fonts/dm-mono-latin-400-normal.woff2) format("woff2"); }
+@font-face { font-family: "DM Mono"; font-style: normal; font-weight: 500; font-display: swap; src: url(/fonts/dm-mono-latin-500-normal.woff2) format("woff2"); }
 /* Le kit Taste (public/assets/system.css) porte le système de design.
    Tailwind n'est pas importé ici : son preflight réinitialiserait les styles du kit.
    Ce fichier ne contient que le CSS propre à la page, à l'intérieur des visuels. */

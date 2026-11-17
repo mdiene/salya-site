@@ -20,7 +20,7 @@ export default function Page() {
       </ul>
       <h2 className="t-card">Services tiers</h2>
       <p>
-        Les polices de caractères sont chargées depuis les serveurs de Google (Google Fonts) : votre adresse IP est transmise à Google à cette occasion.
+        Les polices de caractères sont hébergées sur le site lui-même : aucune requête n’est envoyée à Google ni à un autre service de polices.
         Si vous nous écrivez par WhatsApp, vos messages transitent par WhatsApp (Meta), selon sa propre politique de confidentialité.
       </p>
       <h2 className="t-card">Finalités et base légale</h2>
@@ -35,9 +35,9 @@ export default function Page() {
         Vous pouvez demander l’accès à vos données, leur rectification, leur suppression, ou vous opposer à leur traitement, en nous écrivant aux coordonnées ci-dessus.
         Vous pouvez aussi saisir la Commission de Protection des Données Personnelles (CDP) du Sénégal.
       </p>
-      <h2 className="t-card">Données traitées dans le logiciel Liggeey</h2>
+      <h2 className="t-card">Données traitées dans le logiciel Salya RH</h2>
       <p>
-        Lorsque vous utiliserez Liggeey avec les données réelles de vos salariés, vous resterez responsable de ces données et nous les traiterons pour votre compte.
+        Lorsque vous utiliserez Salya RH avec les données réelles de vos salariés, vous resterez responsable de ces données et nous les traiterons pour votre compte.
         En phase de test, le service est hébergé hors du Sénégal (Supabase et Vercel) et ne traite que des données fictives ; les transferts hors du Sénégal relèvent de la loi 2008-12 et des formalités auprès de la CDP, qui restent à accomplir. Un contrat précisera les mesures de sécurité, l’hébergement, les sauvegardes et la restitution de vos données. Cette politique sera complétée avant l’ouverture du service,
         après les formalités auprès de la CDP : <Ph>déclaration ou autorisation à effectuer avant le lancement</Ph>.
       </p>

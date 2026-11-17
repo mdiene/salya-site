@@ -4,7 +4,7 @@ import KitScripts from "./KitScripts";
 
 const TITLE = "Salya : la paie et les RH du Sénégal, sans tableur";
 const DESC =
-  "Liggeey, le module RH et paie de Salya : calcul, relecture, approbation et règlement de la paie en FCFA, congés et dossiers des salariés, un mois d'essai offert.";
+  "Salya RH, de la gamme Salya (Groupe Mozaic) : calcul, relecture, approbation et règlement de la paie en FCFA, congés et dossiers des salariés. Version de test, données fictives.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -38,12 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="fr" data-type="software" data-radius="soft" data-ground="sand" data-buttons="arrow" data-motion suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..700&family=Figtree:wght@400..600&family=DM+Mono:wght@400;500&display=swap"
-          rel="stylesheet"
-        />
+        <link rel="preload" href="/fonts/bricolage-grotesque-latin-standard.woff2" as="font" type="font/woff2" crossOrigin="" />
         <link rel="stylesheet" href="/assets/system.css" />
         <link rel="stylesheet" href="/assets/ui/cards.css" />
         <link rel="stylesheet" href="/assets/motion/motion.css" />
